@@ -1,0 +1,5 @@
+Para convertir shapefiles en geojson, utiliza GDAL
+```
+$ ogr2ogr -f "GEOJSON" geojson/test.json -t_srs EPSG:4326 -s_srs EPSG:5346 amboy_ejes.shp
+```
+
