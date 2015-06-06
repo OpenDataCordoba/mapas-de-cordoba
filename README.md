@@ -37,3 +37,11 @@ recursos GeoJSON.
 ## Visualizacion de GeoJSON online
 
 https://github.com/mapbox/geojson.io
+
+## Contacto
+
+Gaston: acila.gas (at) gmail.com
+Mauricio: xmauryvrockx (at) gmail.com
+Matias: matias-sosa (at) outlook.com
+Andres: Andres (at) data99.com.ar
+Lucas: lbellomo (at) protonmail.ch
