@@ -4,6 +4,10 @@ Origen de estos datos
 Son publicados por el gobierno de la provincia de cordoba en 
 http://estadistica.cba.gov.ar/Territorio/GeoPortal/tabid/564/language/es-AR/Default.aspx
 
+Replica
+-------
+http://andresvazquez.com.ar/data/GeoPortal-Cordoba/
+
 Projectiones Geograficas
 ------------------------
 Las entidades oficiales utilizan proyecciones **Campo Inchauspe - Gauss-Kruger 
@@ -40,7 +44,7 @@ https://github.com/mapbox/geojson.io
 
 ## Contacto
 
-- Gaston: acila.gas (at) gmail.com @avilaton
+- Gaston: avila.gas (at) gmail.com @avilaton
 - Andres: Andres (at) data99.com.ar @avdata99
 - Lucas: lbellomo (at) protonmail.ch @lbellomo
 - Mauricio: xmauryvrockx (at) gmail.com @maurygreen
