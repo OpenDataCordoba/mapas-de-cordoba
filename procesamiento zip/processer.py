@@ -13,6 +13,10 @@ def process(filename):
     dpto = ''
     data_list = filename.split(' - ')
     aux_dto_list = data_list[0].split(' ')
+    if len(aux_dto_list) < 3:
+        print "No compatible: %s" % data_list
+        return False
+        
     aux_dto_list.pop(0) #eliminamos 'Capa'
     aux_dto_list.pop(0) #eliminamos 'Localidad'
     #Si la tercera palabra es un 'de', lo eliminamos
