@@ -40,8 +40,9 @@ https://github.com/mapbox/geojson.io
 
 ## Contacto
 
-Gaston: acila.gas (at) gmail.com
-Mauricio: xmauryvrockx (at) gmail.com
+Gaston: acila.gas (at) gmail.com @avilaton
+Andres: Andres (at) data99.com.ar @avdata99
+Lucas: lbellomo (at) protonmail.ch @lbellomo
+Mauricio: xmauryvrockx (at) gmail.com @maurygreen
 Matias: matias-sosa (at) outlook.com
-Andres: Andres (at) data99.com.ar
-Lucas: lbellomo (at) protonmail.ch
+
