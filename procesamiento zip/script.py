@@ -1,27 +1,15 @@
-import os, subprocess, shutil
+import os, subprocess, shutil, sys, processer, re
 
-archivos = os.listdir(".")
+path = sys.argv[1]
 
-# Se crea la carpeta de salida
+archives = os.listdir(path)
 
-os.mkdir("geojson")
+for file in archives:
+    file_dir = file[:-4]
+    os.mkdir(name_attr[0]+"_"+name_attr[1]+"_"+name_attr[2]+"_"+name_attr[3])
+    name_attr = processer.process(file)
+    subprocess.call(["unzip", os.path.join(path, file), "-d", os.path.join(os.getcwd(), file_dir)])
 
-for comprimido in archivos:
-    # Se crea una carpeta con el nombre del zip, sin el ".zip"
-    carpeta = comprimido[:-4]
-    os.mkdir(carpeta)
-    # Se descomprime en la carpeta "carpeta"
-    subprocess.call(["unzip", comprimido, "-d", carpeta])
-    os.chdir(carpeta)
-    # Se busca al archivo de entrada
-    nombre_entrada = os.listdir(".")[0][:-3] + "shp"
-    nombre_salida =  os.listdir(".")[0][:-3] + "geojson"
-    # Se comvierte a geojson
-    subprocess.call(["ogr2ogr", "-f", "\"GEOJSON\"", nombre_salida ,"-t_srs", "EPSG:4326", "-s_srs", "EPSG:22194", nombre_entrada])
+    command = "ogr2ogr -f \"GEOJSON\" "+name_attr[0]+"_"+name_attr[1]+"_"+name_attr[2]+"_"+name_attr[3]+".geojson -t_srs EPSG:4326 -s_srs EPSG:22194 "+file_dir+"/*.shp"
 
-    # Se mueve el geojson a la carpeta geojson y se borra el resto 
-    shutil.move(nombre_salida, "../geojson/" + nombre_salida)
-    os.chdir("..")
-    shutil.rmtree(carpeta)           
-    
-    
+    print command
