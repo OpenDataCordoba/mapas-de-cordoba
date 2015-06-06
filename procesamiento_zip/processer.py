@@ -16,7 +16,7 @@ def process(filename):
     if len(aux_dto_list) < 3:
         print "No compatible: %s" % data_list
         return False
-        
+
     aux_dto_list.pop(0) #eliminamos 'Capa'
     aux_dto_list.pop(0) #eliminamos 'Localidad'
     #Si la tercera palabra es un 'de', lo eliminamos
@@ -27,8 +27,8 @@ def process(filename):
         dpto += word
     #Formamos la lista
     result.append(dpto.decode('iso-8859-1').encode('utf8'))
-    result.append(data_list[1])
-    result.append(data_list[2])
-    result.append(data_list[3])
+    result.append(re.sub(" ", "", data_list[1]))
+    result.append(re.sub(" ", "", data_list[2]))
+    result.append(re.sub(" ", "", data_list[3]))
 
     return result
