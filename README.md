@@ -4,8 +4,7 @@ Origen de estos datos
 Son publicados por el gobierno de la provincia de cordoba en 
 http://estadistica.cba.gov.ar/Territorio/GeoPortal/tabid/564/language/es-AR/Default.aspx
 
-Replica
--------
+#### Replica scrapeada
 http://andresvazquez.com.ar/data/GeoPortal-Cordoba/
 
 Projectiones Geograficas
