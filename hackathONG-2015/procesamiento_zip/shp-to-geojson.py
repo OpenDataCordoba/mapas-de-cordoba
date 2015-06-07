@@ -102,7 +102,8 @@ for filename in archives:
                     max_levi = lev_res
                     final_loc[loc] = {'muni': muni, 'muni_id': m['id'], 'max_levi': lev_res, 'filename': fname}
                     final_munis[loc_check] = {'loc': loc, 'muni_municipedia': muni, 'id_municipedia':m['id'], 
-                                        'depto':depto, 'max_levi': lev_res, 'filename': fname}
+                                        'depto':depto, 'max_levi': lev_res, 'filename': fname, 'tipo': tipo,
+                                        'anio': anio}
                     final_id_minicipedia = m['id']
                     final_muni = muni
                     
@@ -121,7 +122,8 @@ for filename in archives:
             final_munis[loc_check] = {'loc': loc, 'muni_municipedia': final_loc[loc]['muni'], 
                                      'id_municipedia':final_loc[loc]['muni_id'], 
                                     'depto':'', 'max_levi': final_loc[loc]['max_levi'], 
-                                    'filename': final_loc[loc]['filename'] }
+                                    'filename': final_loc[loc]['filename'], 'tipo': tipo,
+                                    'anio': anio }
                     
     c += 1
     if total > 0 and c >= total: break
@@ -142,11 +144,13 @@ if doLevi: # Ids usados de municipedia (ninguno debve ser 2)
 
     import codecs
     f = codecs.open('tmp.csv', 'w', encoding='utf8')
-    f.write('data, localidad, Municipio, id_muni, Levi, SHP, GeoJSON')
+    f.write('data, localidad, Municipio, id_muni, Levi, tipo, anio, SHP, GeoJSON')
     for i, v in final_munis.iteritems():
         muni = v['muni_municipedia']
         depto = v['depto']
-        f.write('\n%s, %s, %s, %s, %s, %s, %s' % (i, v['loc'], muni, v['id_municipedia'], v['max_levi'], v['filename'] + '.zip', v['filename'] + '.geojson'))
+        f.write('\n%s, %s, %s, %s, %s, %s, %s, %s, %s' % (i, v['loc'], muni, 
+                v['id_municipedia'], v['max_levi'], v['tipo'], v['anio'],
+                v['filename'] + '.zip', v['filename'] + '.geojson'))
         
     f.close()
         

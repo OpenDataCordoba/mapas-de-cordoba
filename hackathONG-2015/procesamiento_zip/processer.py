@@ -14,6 +14,15 @@ def process(filename):
 
     Ejemplo de carpta: <Capa Localidad de Calamuchita - Ca¤ada del Sauce - radio_poly - 2008 - SHP>
     """
+    #algunos estan fallados
+    filename = filename.replace('radio_poly- 2010', 'radio_poly - 2010')
+    filename = filename.replace('-ffcc_arc', '- ffcc_arc')
+    filename = filename.replace('envolvente_poly-', 'envolvente_poly -')
+    filename = filename.replace('-envolvente_poly', '- envolvente_poly')
+    filename = filename.replace('- 1 Seccion', ' 1 Seccion')
+    filename = filename.replace('- 3 Seccion', ' 3 Seccion')
+    filename = filename.replace('Villa Los Llanos - Juarez Celman', 'Villa Los Llanos Juarez Celman')
+    
     result = []
     dpto = ''
     data_list = filename.split(' - ')
