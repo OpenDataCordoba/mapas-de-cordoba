@@ -14,6 +14,10 @@ http://andresvazquez.com.ar/data/GeoPortal-Cordoba/
 #### Requerimientos
 En ubuntu requiere instalar *gdal-bin* para procesar los archivos **SHP**.  
 Usa la libreria *python-levenshtein* para comparar nombres de municipios.  
+Descargue el 
+[archivo con los SHPs](http://andresvazquez.com.ar/data/GeoPortal-Cordoba/full-down-GeoPortal-Cordoba.tar.gz) 
+y colóquelo en el directorio *procesamiento_zip*.  
+Extraiga el contenido y renombre el dictorio de *localidades* como **localidades**.  
 
 Projectiones Geograficas
 ------------------------
