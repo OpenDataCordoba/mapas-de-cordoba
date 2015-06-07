@@ -41,17 +41,16 @@ Otras
 
  - EPGS:22194 Datum campo inchauspe - Gauss-Kruger faja 4
 
-Fuentes de inspiracion para usar estos datos
---------------------------------------------
+## Uso del script principal
+Ingresar al directorio *hackathONG2015/procesamiento_zip*.  
+```
+python shp-to-geojson.py -h
 
-## Github como API GeoJSON
-
-Ver https://github.com/JasonSanford/gitspatial para usar el repo como API a los 
-recursos GeoJSON.
-
-## Visualizacion de GeoJSON online
-
-https://github.com/mapbox/geojson.io
+ -  --doLevi do a Levinshtein comparation
+ -  --doGeoJson process SHP to GeoJson
+ -  --path=/path/to/shp/content/folder
+ -  --total=3 for just test 3 files
+```
 
 ## Contacto
 
@@ -61,3 +60,13 @@ https://github.com/mapbox/geojson.io
 - Mauricio: xmauryvrockx (at) gmail.com @maurygreen
 - Matias: matias-sosa (at) outlook.com
 
+#### Fuentes de inspiracion para usar estos datos
+
+## Github como API GeoJSON
+
+Ver https://github.com/JasonSanford/gitspatial para usar el repo como API a los 
+recursos GeoJSON.
+
+## Visualizacion de GeoJSON online
+
+https://github.com/mapbox/geojson.io
