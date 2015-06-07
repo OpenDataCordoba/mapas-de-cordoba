@@ -8,8 +8,8 @@ http://estadistica.cba.gov.ar/Territorio/GeoPortal/tabid/564/language/es-AR/Defa
 http://andresvazquez.com.ar/data/GeoPortal-Cordoba/
 
 #### Requerimientos
-En ubuntu requiere instalar *gdal-bin* para procesar los archivos **SHP**
-Usa la libreria *python-levenshtein* para comparar nombres de municipios
+En ubuntu requiere instalar *gdal-bin* para procesar los archivos **SHP**.  
+Usa la libreria *python-levenshtein* para comparar nombres de municipios.  
 
 Projectiones Geograficas
 ------------------------
