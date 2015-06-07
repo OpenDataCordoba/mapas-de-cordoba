@@ -45,6 +45,8 @@ if doLevi:
     from munis import getMunis
     munis = getMunis().munis
     final_munis = {} # relacion final
+    id_used = {} # ids usados (para no usar mas de una vez un ID)
+    used = {} # how we use or connect names
     
 c=0
 for filename in archives:
@@ -80,19 +82,39 @@ for filename in archives:
         os.system(command)
 
     if doLevi:
-        loc = unicode(localidad)
+        try:
+            loc = unicode(localidad.decode('utf8'))
+        except:
+            print 'Fail to decode %s %s' % (localidad, type(localidad))
+            exit()
+            
         if final_munis.get(loc, False) == False:
             max_levi = 0.0
+            final_id_minicipedia = None
+            final_muni = ''
             for m in munis:
                 muni = m['municipio']
                 lev_res = levi.ratio(loc, muni)
                 if lev_res > max_levi:
                     max_levi = lev_res
-                    final_munis['loc'] = '%s %s %f' % (muni, m['id'], lev_res)
+                    final_munis[loc] = '%s %s %f' % (muni, m['id'], lev_res)
+                    final_id_minicipedia = m['id']
+                    final_muni = muni
                     
-            print '%s ==> %s' % (loc, final_munis['loc'])
+            print '%s ==> %s' % (loc, final_munis[loc])
+            if id_used.get(final_id_minicipedia, False):
+                id_used[final_id_minicipedia] += 1
+                used[final_id_minicipedia] += ' [%s]' % loc
+            else:
+                id_used[final_id_minicipedia] = 1
+                used[final_id_minicipedia] = '%s: [%s]' % (final_muni, loc)
             
-        
     c += 1
-    if total > 0 and c >= total: exit()
-    
+    if total > 0 and c >= total: break
+
+if doLevi: # Ids usados de municipedia (ninguno debve ser 2)
+    for i, v in id_used.iteritems():
+        if v > 1:
+            print '****ALERTA Usado mas de una vez: %s=%d veces' % (i, v)
+            print used[i]
+        
