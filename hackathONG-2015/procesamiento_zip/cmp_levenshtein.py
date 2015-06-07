@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-# -*- coding: utf-8 -*-
+""" comparar los textos de los archivos con los nombres oficiales de municipedia
+para poder vincular los IDs """
 import json
 
 class getMunis:
@@ -12,7 +13,7 @@ class getMunis:
 # TEST
 import sys, os
 import Levenshtein as levi
-from ..procesamiento_zip import processer
+import processer
 
 path = sys.argv[1]
 archives = os.listdir(path)
