@@ -7,6 +7,10 @@ http://estadistica.cba.gov.ar/Territorio/GeoPortal/tabid/564/language/es-AR/Defa
 #### Replica scrapeada
 http://andresvazquez.com.ar/data/GeoPortal-Cordoba/
 
+### Objetivos
+ - Procesar los archivos **SHP** hacia formatos mas ambables.  
+ - Conectar estos datos al portal [Municipedia](http://municipedia.com).  
+ 
 #### Requerimientos
 En ubuntu requiere instalar *gdal-bin* para procesar los archivos **SHP**.  
 Usa la libreria *python-levenshtein* para comparar nombres de municipios.  
