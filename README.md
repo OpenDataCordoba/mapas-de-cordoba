@@ -8,7 +8,7 @@ http://estadistica.cba.gov.ar/Territorio/GeoPortal/tabid/564/language/es-AR/Defa
 http://andresvazquez.com.ar/data/GeoPortal-Cordoba/
 
 ### Objetivos
- - Procesar los archivos **SHP** hacia formatos mas ambables.  
+ - Procesar los archivos **SHP** hacia formatos mas amigables.  
  - Conectar estos datos al portal [Municipedia](http://municipedia.com).  
  
 #### Requerimientos
