@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Leer un directorio y procesa todos sus archivos SHP-ZIP
 """
@@ -44,9 +45,8 @@ if doLevi:
     import Levenshtein as levi
     from munis import getMunis
     munis = getMunis().munis
-    final_munis = {} # relacion final
-    id_used = {} # ids usados (para no usar mas de una vez un ID)
-    used = {} # how we use or connect names
+    final_munis = {} # relacion final desde el lado de los nombres de los archivos
+    final_municipedia = {} # uso de los IDs de municipedia
     
 c=0
 for filename in archives:
@@ -81,40 +81,64 @@ for filename in archives:
         print command
         os.system(command)
 
-    if doLevi:
-        try:
-            loc = unicode(localidad.decode('utf8'))
-        except:
-            print 'Fail to decode %s %s' % (localidad, type(localidad))
-            exit()
-            
+    if doLevi: # buscar por cada archivo cual es el municipio oficial mas parecido
+        fname = filename if type(filename) == unicode else unicode(filename.decode('utf8'))
+        fname = fname.replace('.zip', '')
+        
+        # suponemos que localidad esta SIEMPRE escrito igual pero no,
+        # las de 2010 y 2008 pueden diferir ... (por ejemplo Monte Maiz esta con y sin acento)
+        loc = localidad if type(localidad) == unicode else unicode(localidad.decode('utf8'))
+                
         if final_munis.get(loc, False) == False:
             max_levi = 0.0
             final_id_minicipedia = None
             final_muni = ''
             for m in munis:
-                muni = m['municipio']
+                muni = m['municipio'] if type(m['municipio']) == unicode else unicode(m['municipio'].decode('utf8'))
+                
                 lev_res = levi.ratio(loc, muni)
                 if lev_res > max_levi:
                     max_levi = lev_res
-                    final_munis[loc] = '%s %s %f' % (muni, m['id'], lev_res)
+                    final_munis[loc] = {'muni_municipedia': muni, 'id_municipedia':m['id'], 
+                                        'depto':depto, 'max_levi': lev_res, 'filename': fname}
                     final_id_minicipedia = m['id']
                     final_muni = muni
                     
-            print '%s ==> %s' % (loc, final_munis[loc])
-            if id_used.get(final_id_minicipedia, False):
-                id_used[final_id_minicipedia] += 1
-                used[final_id_minicipedia] += ' [%s]' % loc
-            else:
-                id_used[final_id_minicipedia] = 1
-                used[final_id_minicipedia] = '%s: [%s]' % (final_muni, loc)
+            # print '%s ==> %s' % (loc, final_munis[loc])
             
+            if final_municipedia.get(final_id_minicipedia, False):
+                final_municipedia[final_id_minicipedia]['uses'].append({'localidad': loc, 'depto':depto, 'levi': lev_res})
+                final_municipedia[final_id_minicipedia]['used'] += 1
+                
+            else:
+                final_municipedia[final_id_minicipedia] = {'name': final_muni, 'used': 1, 
+                                                           'uses': [{'localidad': loc, 
+                                                           'levi': lev_res, 'filename': fname}]}
+                
     c += 1
     if total > 0 and c >= total: break
 
 if doLevi: # Ids usados de municipedia (ninguno debve ser 2)
-    for i, v in id_used.iteritems():
-        if v > 1:
-            print '****ALERTA Usado mas de una vez: %s=%d veces' % (i, v)
-            print used[i]
+    # escribir el SQL final
+    sql = """CREATE TABLE `tmp_99` (
+         `id_muni` int(5) NOT NULL,
+         `localidad` int(5) NOT NULL,
+         `levi` float(10,2) NOT NULL,
+         `shp` varchar(190) NOT NULL,
+         `geojson` varchar(190) NOT NULL
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8;"""
+    for i, v in final_municipedia.iteritems():
+        if v['used'] > 1:
+            print '****ALERTA %s Usado mas de una vez: %s=%d veces' % (v['name'], i, v['used'])
+            print v['uses']
+
+    import codecs
+    f = codecs.open('tmp.csv', 'w', encoding='utf8')
+    f.write('localidad, Municipio, id_muni, Levi, SHP, GeoJSON')
+    for i, v in final_munis.iteritems():
+        muni = v['muni_municipedia']
+        depto = v['depto']
+        f.write('\n%s, %s, %s, %s, %s, %s' % (i, muni, v['id_municipedia'], v['max_levi'], v['filename'] + '.zip', v['filename'] + '.geojson'))
+        
+    f.close()
         
