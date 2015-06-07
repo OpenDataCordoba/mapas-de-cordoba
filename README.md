@@ -51,6 +51,8 @@ python shp-to-geojson.py -h
  -  --path=/path/to/shp/content/folder
  -  --total=3 for just test 3 files
 ```
+Creará un directorio **geojson** para los archivos resultantes y otro
+**tmp** para la descompresión de los archivos *shp-ZIP*.  
 
 ## Contacto
 
