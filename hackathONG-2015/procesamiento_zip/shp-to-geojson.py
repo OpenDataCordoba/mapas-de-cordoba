@@ -45,8 +45,9 @@ if doLevi:
     import Levenshtein as levi
     from munis import getMunis
     munis = getMunis().munis
-    final_munis = {} # relacion final desde el lado de los nombres de los archivos
+    final_munis = {} # relacion final desde el lado de los nombres de los archivos (localidad + tipo + anio)
     final_municipedia = {} # uso de los IDs de municipedia
+    final_loc = {} # relacion final localidad -> municipio
     
 c=0
 for filename in archives:
@@ -88,8 +89,8 @@ for filename in archives:
         # suponemos que localidad esta SIEMPRE escrito igual pero no,
         # las de 2010 y 2008 pueden diferir ... (por ejemplo Monte Maiz esta con y sin acento)
         loc = localidad if type(localidad) == unicode else unicode(localidad.decode('utf8'))
-                
-        if final_munis.get(loc, False) == False:
+        loc_check = loc + '-' + tipo + '-' + anio
+        if final_munis.get(loc_check, False) == False:
             max_levi = 0.0
             final_id_minicipedia = None
             final_muni = ''
@@ -99,7 +100,8 @@ for filename in archives:
                 lev_res = levi.ratio(loc, muni)
                 if lev_res > max_levi:
                     max_levi = lev_res
-                    final_munis[loc] = {'muni_municipedia': muni, 'id_municipedia':m['id'], 
+                    final_loc[loc] = {'muni': muni, 'muni_id': m['id'], 'max_levi': lev_res, 'filename': fname}
+                    final_munis[loc_check] = {'loc': loc, 'muni_municipedia': muni, 'id_municipedia':m['id'], 
                                         'depto':depto, 'max_levi': lev_res, 'filename': fname}
                     final_id_minicipedia = m['id']
                     final_muni = muni
@@ -114,7 +116,13 @@ for filename in archives:
                 final_municipedia[final_id_minicipedia] = {'name': final_muni, 'used': 1, 
                                                            'uses': [{'localidad': loc, 
                                                            'levi': lev_res, 'filename': fname}]}
-                
+        else:
+            # ya detecte el municpio pero este es otro mapa distinto que necesito tambien
+            final_munis[loc_check] = {'loc': loc, 'muni_municipedia': final_loc[loc]['muni'], 
+                                     'id_municipedia':final_loc[loc]['muni_id'], 
+                                    'depto':'', 'max_levi': final_loc[loc]['max_levi'], 
+                                    'filename': final_loc[loc]['filename'] }
+                    
     c += 1
     if total > 0 and c >= total: break
 
@@ -134,11 +142,11 @@ if doLevi: # Ids usados de municipedia (ninguno debve ser 2)
 
     import codecs
     f = codecs.open('tmp.csv', 'w', encoding='utf8')
-    f.write('localidad, Municipio, id_muni, Levi, SHP, GeoJSON')
+    f.write('data, localidad, Municipio, id_muni, Levi, SHP, GeoJSON')
     for i, v in final_munis.iteritems():
         muni = v['muni_municipedia']
         depto = v['depto']
-        f.write('\n%s, %s, %s, %s, %s, %s' % (i, muni, v['id_municipedia'], v['max_levi'], v['filename'] + '.zip', v['filename'] + '.geojson'))
+        f.write('\n%s, %s, %s, %s, %s, %s, %s' % (i, v['loc'], muni, v['id_municipedia'], v['max_levi'], v['filename'] + '.zip', v['filename'] + '.geojson'))
         
     f.close()
         
