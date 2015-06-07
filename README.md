@@ -7,6 +7,10 @@ http://estadistica.cba.gov.ar/Territorio/GeoPortal/tabid/564/language/es-AR/Defa
 #### Replica scrapeada
 http://andresvazquez.com.ar/data/GeoPortal-Cordoba/
 
+#### Requerimientos
+En ubuntu requiere instalar *gdal-bin* para procesar los archivos **SHP**
+Usa la libreria *python-levenshtein* para comparar nombres de municipios
+
 Projectiones Geograficas
 ------------------------
 Las entidades oficiales utilizan proyecciones **Campo Inchauspe - Gauss-Kruger 

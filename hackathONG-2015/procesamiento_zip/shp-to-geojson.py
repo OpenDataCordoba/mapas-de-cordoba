@@ -5,7 +5,7 @@ Leer un directorio y procesa todos sus archivos SHP-ZIP
 
 import os, subprocess, sys, processer
 
-path = '/home/casa/hton/GeoPortal-Cordoba/localidades' # my default value
+path = 'GeoPortal-Cordoba/localidades' # my default value
 total = 0 # do a full process. Use --total=3 for test 3 files
 doLevi=False # do a Levinshtein comparation
 doGeoJson=False # process shp to GeoJson
