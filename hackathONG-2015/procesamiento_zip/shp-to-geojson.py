@@ -89,14 +89,15 @@ for filename in archives:
         # suponemos que localidad esta SIEMPRE escrito igual pero no,
         # las de 2010 y 2008 pueden diferir ... (por ejemplo Monte Maiz esta con y sin acento)
         loc = localidad if type(localidad) == unicode else unicode(localidad.decode('utf8'))
+        depto = depto if type(depto) == unicode else unicode(depto.decode('utf8'))
         loc_check = loc + '-' + tipo + '-' + anio
         #limpiar tipos
         tipo_nice = tipo.replace('ejes_arc', 'Calles').replace('envolvente_poly', 'Envolvente')
         tipo_nice = tipo_nice.replace('envolventes_poly', 'Envolvente').replace('fraccion_poly', 'Fraccion')
         tipo_nice = tipo_nice.replace('manzana_poly', 'Manzanas').replace('manzanas_poly', 'Manzanas')
         tipo_nice = tipo_nice.replace('radio_poly', 'Radios').replace('radios_poly', 'Radios')
-        tipo_nice = tipo_nice.replace('rios_arc', 'Rios')
-        
+        tipo_nice = tipo_nice.replace('rios_arc', 'Rios').replace('ffcc_arc', 'Ferrocarriles')
+        tipo_nice = tipo_nice.replace('rios_ffcc_arc', 'Rios y Ferrocarriles').replace('eje_arc', 'Calles')
         geojson_mcp_fld = 'geojson_mcp_' + tipo_nice + " " + anio
         shp_mcp_fld = 'shp_mcp_' + tipo_nice + " " + anio
                     
@@ -113,7 +114,7 @@ for filename in archives:
                     final_loc[loc] = {'muni': muni, 'muni_id': m['id'], 'max_levi': lev_res, 'filename': fname}
                     final_munis[loc] = {'loc': loc, 'muni_municipedia': muni, 'id_municipedia':m['id'], 
                                         'depto':depto, 'max_levi': lev_res, geojson_mcp_fld: fname + '.geojson', 
-                                        'tipo': tipo, shp_mcp_fld: fname + '.zip', 'anio': anio}
+                                        shp_mcp_fld: fname + '.zip', 'anio': anio}
                     final_id_minicipedia = m['id']
                     final_muni = muni
                     
@@ -152,15 +153,31 @@ if doLevi: # Ids usados de municipedia (ninguno debve ser 2)
     import codecs
     f = codecs.open('tmp.json', 'w', encoding='utf8')
     f.write(json.dumps(final_munis, indent=4, sort_keys=True))
-    """
-    f.write('data, localidad, Municipio, id_muni, Levi, tipo, anio, SHP, GeoJSON')
-    for i, v in final_munis.iteritems():
-        muni = v['muni_municipedia']
-        depto = v['depto']
-        f.write('\n%s, %s, %s, %s, %s, %s, %s, %s, %s' % (i, v['loc'], muni, 
-                v['id_municipedia'], v['max_levi'], v['tipo'], v['anio'],
-                v['filename'] + '.zip', v['filename'] + '.geojson'))
-        """
     f.close()
+
+    # listar todos los campos del CSV/SQL final
+    # hacer el CSV final
+    f = codecs.open('tmp.csv', 'w', encoding='utf8')
+    f.write('Localidad')
+    final_fields = []
+    for loc, data in final_munis.iteritems():
+        for c, v in data.iteritems():
+            if c not in final_fields:
+                f.write(', %s' % c)
+                final_fields.append(c)
     
-        
+    
+    for loc, data in final_munis.iteritems():
+        f.write('\n%s' % loc)
+        for fld in final_fields:
+            d = data.get(fld, False)
+            if type(d) == int: d = str(d)
+            # print d, type(d)
+            # if type(d) == str: d = d.decode('utf8')
+            if d:
+                f.write(',%s' % d)
+            else:
+                f.write(',')
+                
+
+    f.close()
