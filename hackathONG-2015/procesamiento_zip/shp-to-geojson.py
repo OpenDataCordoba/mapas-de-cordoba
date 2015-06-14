@@ -124,30 +124,27 @@ for filename in archives:
                     u'Villa dle Totoral': u'Villa del Totoral',
                     u'Villa Mar¡a': u'Villa María'}
 
-        # algunas ciudades tienen mapas de diferentes zonas
-        # primero la zona extra, segundo la ciudad a la que corresponde
-        extra_maps={u'B Nvo Rio Ceballos': u'Río Ceballos',
-                    u'Va Cdad Pque Los Reartes': u'Villa Ciudad Parque Los Reartes',
-                    u'Va Cdad Pque Los Reartes  1 Seccion': u'Villa Ciudad Parque Los Reartes',
-                    u'Va Cdad Pque Los Reartes  3 Seccion': u'Villa Ciudad Parque Los Reartes',
-                    u'Va Ciudad Pque Los Reartes  1 Seccion': u'Villa Ciudad Parque Los Reartes',
-                    }
-                    
         if replaces.get(loc, False): 
             print "REPLACING %s for %s" % (loc, replaces[loc])
             loc = replaces[loc]
+            
+        # algunas ciudades tienen mapas de diferentes zonas. 
+        # primero la zona extra, segundo la ciudad a la que corresponde
+        extra_maps={u'B Nvo Rio Ceballos': u'Río Ceballos -II',
+                    u'Va Cdad Pque Los Reartes': u'Villa Ciudad Parque Los Reartes -II',
+                    u'Va Cdad Pque Los Reartes  1 Seccion': u'Villa Ciudad Parque Los Reartes -III',
+                    u'Va Cdad Pque Los Reartes  3 Seccion': u'Villa Ciudad Parque Los Reartes -IV',
+                    u'Va Ciudad Pque Los Reartes  1 Seccion': u'Villa Ciudad Parque Los Reartes -V',
+                    }
+                    
+        if extra_maps.get(loc, False): 
+            print "ADDING %s for %s" % (loc, extra_maps[loc])
+            loc = extra_maps[loc]
         
         
-        loc_check = loc + '-' + tipo + '-' + anio
-        #limpiar tipos
-        tipo_nice = tipo.replace('ejes_arc', 'Calles').replace('envolvente_poly', 'Envolvente')
-        tipo_nice = tipo_nice.replace('envolventes_poly', 'Envolvente').replace('fraccion_poly', 'Fraccion')
-        tipo_nice = tipo_nice.replace('manzana_poly', 'Manzanas').replace('manzanas_poly', 'Manzanas')
-        tipo_nice = tipo_nice.replace('radio_poly', 'Radios').replace('radios_poly', 'Radios')
-        tipo_nice = tipo_nice.replace('rios_arc', 'Rios').replace('ffcc_arc', 'Ferrocarriles')
-        tipo_nice = tipo_nice.replace('rios_ffcc_arc', 'Rios y Ferrocarriles').replace('eje_arc', 'Calles')
-        geojson_mcp_fld = 'geojson_mcp_' + tipo_nice + " " + anio
-        shp_mcp_fld = 'shp_mcp_' + tipo_nice + " " + anio
+        #TODO limpiar tipos
+        geojson_mcp_fld = 'geojson_mcp_' + tipo + " " + anio
+        shp_mcp_fld = 'shp_mcp_' + tipo + " " + anio
                     
         if final_munis.get(loc, False) == False:
             max_levi = 0.0
@@ -176,7 +173,7 @@ for filename in archives:
                 final_municipedia[final_id_minicipedia] = {'name': final_muni, 'used': 1, 
                                                            'uses': [{'localidad': loc, 
                                                            'levi': lev_res, 'filename': fname}]}
-        else:
+        else: #el mejor levi ya fuedefinido
             # ya detecte el municpio pero este es otro mapa distinto que necesito tambien
             final_munis[loc][geojson_mcp_fld] = fname + '.geojson'
             final_munis[loc][shp_mcp_fld] = fname + '.shp'
@@ -200,21 +197,21 @@ if doLevi: # Ids usados de municipedia (ninguno debve ser 2)
     # hacer el CSV final
     f = codecs.open('tmp.csv', 'w', encoding='utf8')
     f.write('Localidad')
-    final_fields = []
+    # juntar todos los campos de todos los recursos para hacer una tabla unica
+    final_fields = ['loc', 'muni_municipedia', 'id_municipedia', 'depto', 'max_levi', 'anio']
     for loc, data in final_munis.iteritems():
         for c, v in data.iteritems():
             if c not in final_fields:
                 f.write(', %s' % c)
                 final_fields.append(c)
     
-    
+    # escribir cada dato en la columna que corresponda
     for loc, data in final_munis.iteritems():
         f.write('\n%s' % loc)
         for fld in final_fields:
             d = data.get(fld, False)
             if type(d) == int: d = str(d)
-            # print d, type(d)
-            # if type(d) == str: d = d.decode('utf8')
+            if type(d) == str: d = d.decode('utf8')
             if d:
                 f.write(',%s' % d)
             else:
