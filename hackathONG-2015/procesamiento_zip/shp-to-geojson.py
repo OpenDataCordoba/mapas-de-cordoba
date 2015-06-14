@@ -92,12 +92,15 @@ for filename in archives:
         depto = depto if type(depto) == unicode else unicode(depto.decode('utf8'))
         loc_check = loc + '-' + tipo + '-' + anio
         #limpiar tipos
+        """
         tipo_nice = tipo.replace('ejes_arc', 'Calles').replace('envolvente_poly', 'Envolvente')
         tipo_nice = tipo_nice.replace('envolventes_poly', 'Envolvente').replace('fraccion_poly', 'Fraccion')
         tipo_nice = tipo_nice.replace('manzana_poly', 'Manzanas').replace('manzanas_poly', 'Manzanas')
         tipo_nice = tipo_nice.replace('radio_poly', 'Radios').replace('radios_poly', 'Radios')
         tipo_nice = tipo_nice.replace('rios_arc', 'Rios').replace('ffcc_arc', 'Ferrocarriles')
         tipo_nice = tipo_nice.replace('rios_ffcc_arc', 'Rios y Ferrocarriles').replace('eje_arc', 'Calles')
+        """
+        tipo_nice = tipo
         geojson_mcp_fld = 'geojson_mcp_' + tipo_nice + " " + anio
         shp_mcp_fld = 'shp_mcp_' + tipo_nice + " " + anio
                     
@@ -145,12 +148,19 @@ if doLevi: # Ids usados de municipedia (ninguno debve ser 2)
          `shp` varchar(190) NOT NULL,
          `geojson` varchar(190) NOT NULL
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8;"""
+    faileds = {} # algunos casos no son fallas en realidad        
     for i, v in final_municipedia.iteritems():
         if v['used'] > 1:
             print '****ALERTA %s Usado mas de una vez: %s=%d veces' % (v['name'], i, v['used'])
             print v['uses']
-
+            faileds[i] =v
+        
     import codecs
+    f = codecs.open('duplicados.json', 'w', encoding='utf8')
+    f.write(json.dumps(faileds, indent=4, sort_keys=True))
+    f.close()
+
+    
     f = codecs.open('tmp.json', 'w', encoding='utf8')
     f.write(json.dumps(final_munis, indent=4, sort_keys=True))
     f.close()
@@ -159,7 +169,11 @@ if doLevi: # Ids usados de municipedia (ninguno debve ser 2)
     # hacer el CSV final
     f = codecs.open('tmp.csv', 'w', encoding='utf8')
     f.write('Localidad')
-    final_fields = []
+    # primero los que me interesan mas
+    final_fields = ['loc', 'muni_municipedia', 'max_levi', 'id_municipedia', 'depto']
+    for especial in final_fields:
+        f.write(', %s' % especial)
+        
     for loc, data in final_munis.iteritems():
         for c, v in data.iteritems():
             if c not in final_fields:
