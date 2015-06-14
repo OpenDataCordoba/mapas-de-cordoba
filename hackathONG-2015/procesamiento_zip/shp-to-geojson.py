@@ -182,6 +182,7 @@ for filename in archives:
     if total > 0 and c >= total: break
 
 if doLevi: # Ids usados de municipedia (ninguno debve ser 2)
+    faileds = {} # algunos casos no son fallas en realidad        
     for i, v in final_municipedia.iteritems():
         if v['used'] > 1:
             pass
@@ -189,6 +190,11 @@ if doLevi: # Ids usados de municipedia (ninguno debve ser 2)
             # print v['uses']
 
     import codecs
+    f = codecs.open('duplicados.json', 'w', encoding='utf8')
+    f.write(json.dumps(faileds, indent=4, sort_keys=True))
+    f.close()
+
+    
     f = codecs.open('tmp.json', 'w', encoding='utf8')
     f.write(json.dumps(final_munis, indent=4, sort_keys=True))
     f.close()
@@ -198,7 +204,11 @@ if doLevi: # Ids usados de municipedia (ninguno debve ser 2)
     f = codecs.open('tmp.csv', 'w', encoding='utf8')
     f.write('Localidad')
     # juntar todos los campos de todos los recursos para hacer una tabla unica
+    # primero los que me interesan mas
     final_fields = ['loc', 'muni_municipedia', 'id_municipedia', 'depto', 'max_levi', 'anio']
+    for especial in final_fields:
+        f.write(', %s' % especial)
+        
     for loc, data in final_munis.iteritems():
         for c, v in data.iteritems():
             if c not in final_fields:
