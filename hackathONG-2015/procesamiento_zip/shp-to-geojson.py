@@ -85,10 +85,59 @@ for filename in archives:
     if doLevi: # buscar por cada archivo cual es el municipio oficial mas parecido
         fname = filename if type(filename) == unicode else unicode(filename.decode('utf8'))
         fname = fname.replace('.zip', '')
-        
+
         # suponemos que localidad esta SIEMPRE escrito igual pero no,
         # las de 2010 y 2008 pueden diferir ... (por ejemplo Monte Maiz esta con y sin acento)
         loc = localidad if type(localidad) == unicode else unicode(localidad.decode('utf8'))
+        
+        # ciudades no resuletas en municipedia
+        ignores = [u'Canteras Quilpo', u'Canteras el Sauce', u'Colonia Veinticinco',
+                   u'Costa Azul', u'Country Chacras de la Villa', u'Dos Arroyos',
+                   u'El Corcovado-El Torreon', u'El Pantanillo', u'El Potrerillo', 
+                   u'El Rincon', u'Estacion Lecueder', u'General Paz', u'Jose de la Quintana', 
+                   u'La Banda', u'La Boca del Rio', u'La Travesia', u'Las Chacras', 
+                   u'Las Corzuelas', u'Las Mojarras', u'Loma Bola', u'Los Callejones',
+                   u'Los Molles', u'Parque Norte', u'Quebracho Ladeado', u'Quebrada de los Pozos', 
+                   u'San Pedro de los Toyos', u'Sanabria', u'Villa Albertina',
+                   u'Santa Magdalena', u'Villa Berna', u'Villa La Rivera', 
+                   u'Villa Los Llanos Juarez Celman', u'Villa Oeste', u'Villa Quilino', 
+                   u'Villa Santa Eugenia', u'Yocsina']
+        if loc in ignores:
+            print "Ignoring %s" % loc
+            continue
+
+        # reemplazos de municipios que cambian de nombre entre la denominacion que se les 
+        # dio en el 2008 y en 2010. Necesito que estos dos sean el mismo
+        replaces = {u'Cura Brochero': u'Villa Cura Brochero', 
+                    u'Cruz de Ca¤a': u'Cruz de Caña',
+                    u'Ba¤ado de Soto': u'Bañado de Soto',
+                    u'Cañada de Rio Pinto': u'Cañada de Río Pinto',
+                    u'De n Funes': u'Dean Funes',
+                    u'Guazimotin': u'Guatimozín',
+                    u'Los Cha¤aritos': u'Los Chañaritos',
+                    u'Marcos Juarez': u'Marcos Juárez',
+                    u'Mina clavero': u'Mina Clavero',
+                    u'Monte Maiz': u'Monte Maíz',
+                    u'Pozo del molle': u'Pozo del Molle',
+                    u'Rio Tercero': u'Río Tercero',
+                    u'Transito': u'Tránsito',
+                    u'Villa dle Totoral': u'Villa del Totoral',
+                    u'Villa Mar¡a': u'Villa María'}
+
+        # algunas ciudades tienen mapas de diferentes zonas
+        # primero la zona extra, segundo la ciudad a la que corresponde
+        extra_maps={u'B Nvo Rio Ceballos': u'Río Ceballos',
+                    u'Va Cdad Pque Los Reartes': u'Villa Ciudad Parque Los Reartes',
+                    u'Va Cdad Pque Los Reartes  1 Seccion': u'Villa Ciudad Parque Los Reartes',
+                    u'Va Cdad Pque Los Reartes  3 Seccion': u'Villa Ciudad Parque Los Reartes',
+                    u'Va Ciudad Pque Los Reartes  1 Seccion': u'Villa Ciudad Parque Los Reartes',
+                    }
+                    
+        if replaces.get(loc, False): 
+            print "REPLACING %s for %s" % (loc, replaces[loc])
+            loc = replaces[loc]
+        
+        
         loc_check = loc + '-' + tipo + '-' + anio
         if final_munis.get(loc_check, False) == False:
             max_levi = 0.0
@@ -129,18 +178,11 @@ for filename in archives:
     if total > 0 and c >= total: break
 
 if doLevi: # Ids usados de municipedia (ninguno debve ser 2)
-    # escribir el SQL final
-    sql = """CREATE TABLE `tmp_99` (
-         `id_muni` int(5) NOT NULL,
-         `localidad` int(5) NOT NULL,
-         `levi` float(10,2) NOT NULL,
-         `shp` varchar(190) NOT NULL,
-         `geojson` varchar(190) NOT NULL
-        ) ENGINE=InnoDB DEFAULT CHARSET=utf8;"""
     for i, v in final_municipedia.iteritems():
         if v['used'] > 1:
-            print '****ALERTA %s Usado mas de una vez: %s=%d veces' % (v['name'], i, v['used'])
-            print v['uses']
+            pass
+            # print '****ALERTA %s Usado mas de una vez: %s=%d veces' % (v['name'], i, v['used'])
+            # print v['uses']
 
     import codecs
     f = codecs.open('tmp.csv', 'w', encoding='utf8')
