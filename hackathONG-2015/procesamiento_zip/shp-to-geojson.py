@@ -157,7 +157,7 @@ for filename in archives:
                 if lev_res > max_levi:
                     max_levi = lev_res
                     final_loc[loc] = {'muni': muni, 'muni_id': m['id'], 'max_levi': lev_res, 'filename': fname}
-                    final_munis[loc] = {'loc': loc, 'muni_municipedia': muni, 'id_municipedia':m['id'], 
+                    final_munis[loc] = {'muni_municipedia': muni, 'id_municipedia':m['id'], 
                                         'depto':depto, 'max_levi': lev_res, geojson_mcp_fld: fname + '.geojson', 
                                         shp_mcp_fld: fname + '.zip', 'anio': anio}
                     final_id_minicipedia = m['id']
@@ -202,17 +202,17 @@ if doLevi: # Ids usados de municipedia (ninguno debve ser 2)
     # listar todos los campos del CSV/SQL final
     # hacer el CSV final
     f = codecs.open('tmp.csv', 'w', encoding='utf8')
-    f.write('Localidad')
+    f.write('Localidad mapa')
     # juntar todos los campos de todos los recursos para hacer una tabla unica
     # primero los que me interesan mas
-    final_fields = ['loc', 'muni_municipedia', 'id_municipedia', 'depto', 'max_levi', 'anio']
+    final_fields = ['muni_municipedia', 'id_municipedia', 'depto', 'max_levi', 'anio']
     for especial in final_fields:
-        f.write(', %s' % especial)
+        f.write(',%s' % especial)
         
     for loc, data in final_munis.iteritems():
         for c, v in data.iteritems():
             if c not in final_fields:
-                f.write(', %s' % c)
+                f.write(',%s' % c)
                 final_fields.append(c)
     
     # escribir cada dato en la columna que corresponda
