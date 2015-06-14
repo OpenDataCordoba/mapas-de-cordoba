@@ -7,6 +7,18 @@ http://estadistica.cba.gov.ar/Territorio/GeoPortal/tabid/564/language/es-AR/Defa
 #### Replica scrapeada
 http://andresvazquez.com.ar/data/GeoPortal-Cordoba/
 
+### Objetivos
+ - Procesar los archivos **SHP** hacia formatos mas amigables.  
+ - Conectar estos datos al portal [Municipedia](http://municipedia.com).  
+ 
+#### Requerimientos
+En ubuntu requiere instalar *gdal-bin* para procesar los archivos **SHP**.  
+Usa la libreria *python-levenshtein* para comparar nombres de municipios.  
+Descargue el 
+[archivo con los SHPs](http://andresvazquez.com.ar/data/GeoPortal-Cordoba/full-down-GeoPortal-Cordoba.tar.gz) 
+y colóquelo en el directorio *procesamiento_zip*.  
+Extraiga el contenido y renombre el dictorio de *localidades* como **localidades**.  
+
 Projectiones Geograficas
 ------------------------
 Las entidades oficiales utilizan proyecciones **Campo Inchauspe - Gauss-Kruger 
@@ -29,17 +41,18 @@ Otras
 
  - EPGS:22194 Datum campo inchauspe - Gauss-Kruger faja 4
 
-Fuentes de inspiracion para usar estos datos
---------------------------------------------
+## Uso del script principal
+Ingresar al directorio *hackathONG2015/procesamiento_zip*.  
+```
+python shp-to-geojson.py -h
 
-## Github como API GeoJSON
-
-Ver https://github.com/JasonSanford/gitspatial para usar el repo como API a los 
-recursos GeoJSON.
-
-## Visualizacion de GeoJSON online
-
-https://github.com/mapbox/geojson.io
+ -  --doLevi do a Levinshtein comparation
+ -  --doGeoJson process SHP to GeoJson
+ -  --path=/path/to/shp/content/folder
+ -  --total=3 for just test 3 files
+```
+Creará un directorio **geojson** para los archivos resultantes y otro
+**tmp** para la descompresión de los archivos *shp-ZIP*.  
 
 ## Contacto
 
@@ -49,3 +62,13 @@ https://github.com/mapbox/geojson.io
 - Mauricio: xmauryvrockx (at) gmail.com @maurygreen
 - Matias: matias-sosa (at) outlook.com
 
+#### Fuentes de inspiracion para usar estos datos
+
+## Github como API GeoJSON
+
+Ver https://github.com/JasonSanford/gitspatial para usar el repo como API a los 
+recursos GeoJSON.
+
+## Visualizacion de GeoJSON online
+
+https://github.com/mapbox/geojson.io
