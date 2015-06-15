@@ -3,7 +3,7 @@
 Leer un directorio y procesa todos sus archivos SHP-ZIP
 """
 
-import os, subprocess, sys, processer, json
+import os, subprocess, sys, processer, json, glob
 
 path = 'GeoPortal-Cordoba/localidades' # my default value
 total = 0 # do a full process. Use --total=3 for test 3 files
@@ -45,6 +45,7 @@ if doLevi:
     import Levenshtein as levi
     from munis import getMunis
     munis = getMunis().munis
+    munis_missing = list(munis) # copia para saber cuales no se usan
     final_munis = {} # relacion final desde el lado de los nombres de los archivos (localidad + tipo + anio)
     final_municipedia = {} # uso de los IDs de municipedia
     final_loc = {} # relacion final localidad -> municipio
@@ -65,22 +66,34 @@ for filename in archives:
             os.mkdir(dest)
             subprocess.call(["unzip", os.path.join(path, filename), "-d", os.path.join(os.getcwd(), dest)])
         except:
-            print "Ya descomptido"
             pass
-    
+
+        # shp original
+        shp_orig = glob.glob(os.path.join(os.getcwd(), dest, "*.shp"))[0]
+        
         # borrar el geoJson de destino si ya existe
-        dest_geojson = os.path.join(geojson_folder,filename.replace('.zip', '.geojson').replace(' ', '\ '))
-        try:
-            os.remove(dest_geojson)
-            print 'Borrado %s' % dest_geojson
-        except OSError:
-            print 'No existia %s' % dest_geojson
+        dest_geojson = os.path.join(geojson_folder,filename.replace('.zip', '.geojson')) # NO ESCAPAR PARA EL REMOVE (?), fallará)
+        
+        proc = subprocess.Popen(['rm', dest_geojson], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        stdout, stderr = proc.communicate()
+        if proc.returncode == 1:
+            pass # No such file
+        elif proc.returncode != 0:
+            print 'ERROR[%d] %s -- %s' % (proc.returncode, stdout, stderr)
+            exit(1)
             
-        command =  "ogr2ogr -f GeoJSON -t_srs EPSG:4326 -s_srs EPSG:22194"
-        command += " " + dest_geojson
-        command += " "+os.path.join(os.getcwd(), dest, "*.shp")
-        print command
-        os.system(command)
+        command_parts = ["ogr2ogr", "-f", "GeoJSON", "-t_srs", "EPSG:4326","-s_srs", "EPSG:22194", dest_geojson, shp_orig]
+        
+        proc = subprocess.Popen(command_parts, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        stdout, stderr = proc.communicate()
+
+        if proc.returncode != 0:
+            print command
+            print 'ERROR[%d] %s -- %s' % (proc.returncode, stdout, stderr)
+            # exit(1)
+        # else:
+        #     print "Process OK: %s " % shp_orig
+        
 
     if doLevi: # buscar por cada archivo cual es el municipio oficial mas parecido
         fname = filename if type(filename) == unicode else unicode(filename.decode('utf8'))
@@ -113,7 +126,9 @@ for filename in archives:
                     u'Ba¤ado de Soto': u'Bañado de Soto',
                     u'Cañada de Rio Pinto': u'Cañada de Río Pinto',
                     u'De n Funes': u'Dean Funes',
+                    u'Deán Funes': u'Dean Funes',
                     u'Guazimotin': u'Guatimozín',
+                    u'Guatimozin': u'Guatimozín',
                     u'Los Cha¤aritos': u'Los Chañaritos',
                     u'Marcos Juarez': u'Marcos Juárez',
                     u'Mina clavero': u'Mina Clavero',
@@ -122,7 +137,9 @@ for filename in archives:
                     u'Rio Tercero': u'Río Tercero',
                     u'Transito': u'Tránsito',
                     u'Villa dle Totoral': u'Villa del Totoral',
-                    u'Villa Mar¡a': u'Villa María'}
+                    u'Villa Mar¡a': u'Villa María',
+                    u'Ca¤ada del Sauce': u'Cañada del Sauce',
+                    u'Villa Maria': u'Villa María'}
 
         if replaces.get(loc, False): 
             print "REPLACING %s for %s" % (loc, replaces[loc])
@@ -135,6 +152,10 @@ for filename in archives:
                     u'Va Cdad Pque Los Reartes  1 Seccion': u'Villa Ciudad Parque Los Reartes -III',
                     u'Va Cdad Pque Los Reartes  3 Seccion': u'Villa Ciudad Parque Los Reartes -IV',
                     u'Va Ciudad Pque Los Reartes  1 Seccion': u'Villa Ciudad Parque Los Reartes -V',
+                    u'San Ignacio (Loteo Velez Crespo)': u'San Ignacio I',
+                    u'San Ignacio (Loteo San Javier)': u'San Ignacio II',
+                    u'Country Ch de la Villa-San Isidro': u'Villa San Isidro I',
+                    u'Country San Isidro': u'Villa San Isidro II',
                     }
                     
         if extra_maps.get(loc, False): 
@@ -149,9 +170,14 @@ for filename in archives:
         if final_munis.get(loc, False) == False:
             max_levi = 0.0
             final_id_minicipedia = None
-            final_muni = ''
+            final_muni = None
             for m in munis:
                 muni = m['municipio'] if type(m['municipio']) == unicode else unicode(m['municipio'].decode('utf8'))
+                
+                # asegurarse que todo se inicialicen con cero usos
+                if not final_municipedia.get(m['id'], False):
+                    final_municipedia[m['id']] = {'name': muni, 'used': 0, 'uses': []}
+                
                 
                 lev_res = levi.ratio(loc, muni)
                 if lev_res > max_levi:
@@ -163,16 +189,10 @@ for filename in archives:
                     final_id_minicipedia = m['id']
                     final_muni = muni
                     
-            # print '%s ==> %s' % (loc, final_munis[loc])
-            
-            if final_municipedia.get(final_id_minicipedia, False):
+            if final_muni:
                 final_municipedia[final_id_minicipedia]['uses'].append({'localidad': loc, 'depto':depto, 'levi': lev_res})
                 final_municipedia[final_id_minicipedia]['used'] += 1
                 
-            else:
-                final_municipedia[final_id_minicipedia] = {'name': final_muni, 'used': 1, 
-                                                           'uses': [{'localidad': loc, 
-                                                           'levi': lev_res, 'filename': fname}]}
         else: #el mejor levi ya fuedefinido
             # ya detecte el municpio pero este es otro mapa distinto que necesito tambien
             final_munis[loc][geojson_mcp_fld] = fname + '.geojson'
@@ -182,16 +202,19 @@ for filename in archives:
     if total > 0 and c >= total: break
 
 if doLevi: # Ids usados de municipedia (ninguno debve ser 2)
-    faileds = {} # algunos casos no son fallas en realidad        
+    import codecs
+    f = codecs.open('errores.csv', 'w', encoding='utf8')
+    f.write('id,nombre,error,detalle')
     for i, v in final_municipedia.iteritems():
         if v['used'] > 1:
-            pass
-            # print '****ALERTA %s Usado mas de una vez: %s=%d veces' % (v['name'], i, v['used'])
-            # print v['uses']
+            error = 'Usado %s veces' % v['used']
+            f.write('\n%s,%s,%s,%s' % (i, v['name'], 'repetido', error))
+        elif v['used'] == 0:
+            f.write('\n%s,%s,%s,' % (i, v['name'], 'no usado'))
+            
+    for i in ignores:
+        f.write('\n%s,%s,%s,' % (0, i, 'no detectado'))
 
-    import codecs
-    f = codecs.open('duplicados.json', 'w', encoding='utf8')
-    f.write(json.dumps(faileds, indent=4, sort_keys=True))
     f.close()
 
     
