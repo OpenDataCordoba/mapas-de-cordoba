@@ -88,7 +88,7 @@ for filename in archives:
         stdout, stderr = proc.communicate()
 
         if proc.returncode != 0:
-            print command
+            print str(command_parts)
             print 'ERROR[%d] %s -- %s' % (proc.returncode, stdout, stderr)
             # exit(1)
         # else:
