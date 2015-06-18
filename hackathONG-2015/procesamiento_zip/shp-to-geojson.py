@@ -57,7 +57,7 @@ for filename in archives:
         continue
 
     depto, localidad, tipo, anio = name_attr
-    
+    errorGeoJson = None # for using at Levi time if needed
     if doGeoJson:
         file_dir = '%s_%s_%s_%s' % (depto.replace(' ',''), localidad.replace(' ',''), tipo.replace(' ',''), anio.replace(' ',''))
         
@@ -89,7 +89,8 @@ for filename in archives:
 
         if proc.returncode != 0:
             print str(command_parts)
-            print 'ERROR[%d] %s -- %s' % (proc.returncode, stdout, stderr)
+            errorGeoJson = 'ERROR[%d] %s -- %s' % (proc.returncode, stdout, stderr)
+            print errorGeoJson
             # exit(1)
         # else:
         #     print "Process OK: %s " % shp_orig
