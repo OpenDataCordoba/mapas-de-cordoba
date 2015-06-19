@@ -183,9 +183,10 @@ for filename in archives:
                 lev_res = levi.ratio(loc, muni)
                 if lev_res > max_levi:
                     max_levi = lev_res
+                    geoJsonFile = fname + '.geojson' if not errorGeoJson else errorGeoJson
                     final_loc[loc] = {'muni': muni, 'muni_id': m['id'], 'max_levi': lev_res, 'filename': fname}
                     final_munis[loc] = {'muni_municipedia': muni, 'id_municipedia':m['id'], 
-                                        'depto':depto, 'max_levi': lev_res, geojson_mcp_fld: fname + '.geojson', 
+                                        'depto':depto, 'max_levi': lev_res, geojson_mcp_fld: geoJsonFile, 
                                         shp_mcp_fld: fname + '.zip', 'anio': anio}
                     final_id_minicipedia = m['id']
                     final_muni = muni
@@ -196,7 +197,7 @@ for filename in archives:
                 
         else: #el mejor levi ya fuedefinido
             # ya detecte el municpio pero este es otro mapa distinto que necesito tambien
-            final_munis[loc][geojson_mcp_fld] = fname + '.geojson'
+            final_munis[loc][geojson_mcp_fld] = fname + '.geojson' if not errorGeoJson else errorGeoJson
             final_munis[loc][shp_mcp_fld] = fname + '.shp'
             
     c += 1
