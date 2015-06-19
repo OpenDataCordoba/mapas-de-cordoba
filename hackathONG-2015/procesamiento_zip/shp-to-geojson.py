@@ -49,7 +49,7 @@ if doLevi:
     final_munis = {} # relacion final desde el lado de los nombres de los archivos (localidad + tipo + anio)
     final_municipedia = {} # uso de los IDs de municipedia
     final_loc = {} # relacion final localidad -> municipio
-    
+    errores_gj = []
 c=0
 for filename in archives:
     name_attr = processer.process(filename)
@@ -88,9 +88,14 @@ for filename in archives:
         stdout, stderr = proc.communicate()
 
         if proc.returncode != 0:
-            print str(command_parts)
-            errorGeoJson = 'ERROR[%d] %s -- %s' % (proc.returncode, stdout, stderr)
-            print errorGeoJson
+            errores_gj.append({'muni': localidad,
+                               'command': ' '.join(command_parts), 
+                               'ret_code': proc.returncode,
+                               'stdout': stdout.replace('\n', ''),
+                               'stderr': stderr.replace('\n', '')})
+            errorGeoJson = 'ERROR'
+            print "Error geoJson %s [%s]-> %s" % (localidad, anio, tipo)
+            
             # exit(1)
         # else:
         #     print "Process OK: %s " % shp_orig
@@ -216,6 +221,14 @@ if doLevi: # Ids usados de municipedia (ninguno debve ser 2)
             
     for i in ignores:
         f.write('\n%s,%s,%s,' % (0, i, 'no detectado'))
+
+    f.close()
+
+
+    f = codecs.open('errores_gj.csv', 'w', encoding='utf8')
+    f.write('muni, command, ret_code, stdout, stderr')
+    for e in errores_gj:    
+        f.write('\n%s,%s,%s,%s,%s' % (e['muni'], e['command'], e['ret_code'], e['stdout'], e['stderr']))
 
     f.close()
 
