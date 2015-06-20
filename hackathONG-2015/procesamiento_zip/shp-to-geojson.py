@@ -172,7 +172,7 @@ for filename in archives:
 
 if doLevi: # Ids usados de municipedia (ninguno debve ser 2)
     import codecs
-    f = codecs.open('errores.csv', 'w', encoding='utf8')
+    f = codecs.open('results/errores.csv', 'w', encoding='utf8')
     f.write('id,nombre,error,detalle')
     for i, v in final_municipedia.iteritems():
         if v['used'] > 1:
@@ -187,7 +187,7 @@ if doLevi: # Ids usados de municipedia (ninguno debve ser 2)
     f.close()
 
 
-    f = codecs.open('errores_gj.csv', 'w', encoding='utf8')
+    f = codecs.open('results/errores_gj.csv', 'w', encoding='utf8')
     f.write('muni, command, ret_code, stdout, stderr')
     for e in errores_gj:    
         f.write('\n%s,%s,%s,%s,%s' % (e['muni'], e['command'], e['ret_code'], e['stdout'], e['stderr']))
@@ -195,13 +195,13 @@ if doLevi: # Ids usados de municipedia (ninguno debve ser 2)
     f.close()
 
     
-    f = codecs.open('tmp.json', 'w', encoding='utf8')
+    f = codecs.open('results/tmp.json', 'w', encoding='utf8')
     f.write(json.dumps(final_munis, indent=4, sort_keys=True))
     f.close()
 
     # listar todos los campos del CSV/SQL final
     # hacer el CSV final
-    f = codecs.open('tmp.csv', 'w', encoding='utf8')
+    f = codecs.open('results/tmp.csv', 'w', encoding='utf8')
     f.write('Localidad mapa')
     # juntar todos los campos de todos los recursos para hacer una tabla unica
     # primero los que me interesan mas

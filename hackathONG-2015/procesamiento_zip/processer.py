@@ -11,7 +11,7 @@ def process(filename):
     devolviendo una lista que contiene, Departamento,
     Localidad, tipo de Dato, y año.
 
-    Ejemplo de carpta: <Capa Localidad de Calamuchita - Ca¤ada del Sauce - radio_poly - 2008 - SHP>
+    Ejemplo de carpeta: <Capa Localidad de Calamuchita - Ca¤ada del Sauce - radio_poly - 2008 - SHP>
     """
     #algunos estan fallados
     from parses import FILENAME_REPLACES
