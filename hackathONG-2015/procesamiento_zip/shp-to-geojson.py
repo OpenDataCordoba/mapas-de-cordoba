@@ -41,6 +41,9 @@ if doGeoJson:
     except:
         pass
 
+    errores_gj = []
+    tipos = [] # todos los tipos para parsear a algo legible
+        
 if doLevi:
     import Levenshtein as levi
     from munis import getMunis
@@ -49,7 +52,7 @@ if doLevi:
     final_munis = {} # relacion final desde el lado de los nombres de los archivos (localidad + tipo + anio)
     final_municipedia = {} # uso de los IDs de municipedia
     final_loc = {} # relacion final localidad -> municipio
-    errores_gj = []
+    
 c=0
 for filename in archives:
     name_attr = processer.process(filename)
@@ -57,6 +60,9 @@ for filename in archives:
         continue
 
     depto, localidad, tipo, anio = name_attr
+    if tipo not in tipos: # solo para hacer una lista completa de tipos usados
+        tipos.append(tipo)
+        
     errorGeoJson = None # for using at Levi time if needed
     if doGeoJson:
         file_dir = '%s_%s_%s_%s' % (depto.replace(' ',''), localidad.replace(' ',''), tipo.replace(' ',''), anio.replace(' ',''))
@@ -203,6 +209,14 @@ if doLevi: # Ids usados de municipedia (salvo casos especiales ninguno debe ser 
     f = codecs.open('results/tmp.json', 'w', encoding='utf8')
     f.write(json.dumps(final_munis, indent=4, sort_keys=True))
     f.close()
+
+    # todos los tipos de poligonos usados (rios, ejes, manzanas, etc)
+    f = codecs.open('results/tipos.csv', 'w', encoding='utf8')
+    f.write('TIPOS USADOS')
+    for t in tipos:
+        f.write('\n%s' % t)
+    f.close()
+
 
     # listar todos los campos del CSV final. 
     # esto es el formato similar a lo que municipedia necesita. Una fila
