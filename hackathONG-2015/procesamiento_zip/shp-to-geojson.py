@@ -62,7 +62,10 @@ for filename in archives:
     depto, localidad, tipo, anio = name_attr
     if tipo not in tipos: # solo para hacer una lista completa de tipos usados
         tipos.append(tipo)
-        
+
+    from parses import SHP_TYPES
+    nice_tipo = SHP_TYPES.get(tipo, 'UNKNOWN SHP TYPE')
+    
     errorGeoJson = None # for using at Levi time if needed
     if doGeoJson:
         file_dir = '%s_%s_%s_%s' % (depto.replace(' ',''), localidad.replace(' ',''), tipo.replace(' ',''), anio.replace(' ',''))
@@ -140,7 +143,10 @@ for filename in archives:
         #TODO limpiar tipos
         geojson_mcp_fld = 'geojson_mcp_' + tipo + " " + anio
         shp_mcp_fld = 'shp_mcp_' + tipo + " " + anio
-                    
+
+        geojson_mcp_fld = 'geojson_mcp_' + nice_tipo + " " + anio
+        shp_mcp_fld = 'shp_mcp_' + nice_tipo + " " + anio
+
         if final_munis.get(loc, False) == False:
             max_levi = 0.0
             final_id_minicipedia = None
@@ -168,7 +174,7 @@ for filename in archives:
                 final_municipedia[final_id_minicipedia]['uses'].append({'localidad': loc, 'depto':depto, 'levi': lev_res})
                 final_municipedia[final_id_minicipedia]['used'] += 1
                 
-        else: #el mejor levi ya fuedefinido
+        else: #el mejor levi ya fue definido
             # ya detecte el municpio pero este es otro mapa distinto que necesito tambien
             final_munis[loc][geojson_mcp_fld] = fname + '.geojson' if not errorGeoJson else errorGeoJson
             final_munis[loc][shp_mcp_fld] = fname + '.shp'
