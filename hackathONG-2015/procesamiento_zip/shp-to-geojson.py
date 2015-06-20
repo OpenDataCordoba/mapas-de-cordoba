@@ -170,6 +170,11 @@ for filename in archives:
     c += 1
     if total > 0 and c >= total: break
 
+try:
+    os.mkdir('results')
+except:
+    pass
+
 if doLevi: # Ids usados de municipedia (ninguno debve ser 2)
     import codecs
     f = codecs.open('results/errores.csv', 'w', encoding='utf8')
