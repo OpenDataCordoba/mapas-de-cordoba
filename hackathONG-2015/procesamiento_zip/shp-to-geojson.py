@@ -175,7 +175,7 @@ try:
 except:
     pass
 
-if doLevi: # Ids usados de municipedia (ninguno debve ser 2)
+if doLevi: # Ids usados de municipedia (salvo casos especiales ninguno debe ser 2)
     import codecs
     f = codecs.open('results/errores.csv', 'w', encoding='utf8')
     f.write('id,nombre,error,detalle')
@@ -191,7 +191,7 @@ if doLevi: # Ids usados de municipedia (ninguno debve ser 2)
 
     f.close()
 
-
+    # errores de codificacion de OGR
     f = codecs.open('results/errores_gj.csv', 'w', encoding='utf8')
     f.write('muni, command, ret_code, stdout, stderr')
     for e in errores_gj:    
@@ -199,13 +199,14 @@ if doLevi: # Ids usados de municipedia (ninguno debve ser 2)
 
     f.close()
 
-    
+    # resultados final en JSON de todas las localidades parseadas
     f = codecs.open('results/tmp.json', 'w', encoding='utf8')
     f.write(json.dumps(final_munis, indent=4, sort_keys=True))
     f.close()
 
-    # listar todos los campos del CSV/SQL final
-    # hacer el CSV final
+    # listar todos los campos del CSV final. 
+    # esto es el formato similar a lo que municipedia necesita. Una fila
+    # por cada municipio, un campo por cada mapa
     f = codecs.open('results/tmp.csv', 'w', encoding='utf8')
     f.write('Localidad mapa')
     # juntar todos los campos de todos los recursos para hacer una tabla unica
