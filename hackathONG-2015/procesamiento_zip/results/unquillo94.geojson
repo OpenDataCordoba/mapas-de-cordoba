@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+                                                                                
+"features": [
+{ "type": "Feature", "properties": { "FNODE_": 630.0, "TNODE_": 650.0, "LPOLY_": 322.0, "RPOLY_": 315.0, "LENGTH": 159.10211, "EUN02_": 940.0, "EUN02_ID": 940.0, "CODIGO": 54400, "ANCHO": 20, "ANCHOMED": 10.0, "NOMBRE": "SALTA", "NOM_NOR": "SALTA", "LADOI": 0, "LADOD": 0, "DESDEI": 0, "DESDED": 0, "HASTAI": 0, "HASTAD": 0, "MZAI": null, "MZAD": null, "CONTEOI": 0, "CONTEOD": 0, "LISTADOI": 0, "LISTADOD": 0, "COLECTI": 0, "COLECTD": 0, "CONSTRI": 0, "CONSTRD": 0, "OBSERI": null, "OBSERD": null }, "geometry": { "type": "LineString", "coordinates": [ [ -64.319183699186581, -31.236541296386758 ], [ -64.320626689932681, -31.237263148671506 ] ] } }
+]
+}
