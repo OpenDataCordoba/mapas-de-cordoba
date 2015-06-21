@@ -33,20 +33,20 @@ archives = os.listdir(path)
 
 tipos = [] # todos los tipos para parsear a algo legible
 errores_gj = []
-    
-if doGeoJson:
-    # crear las carpetas de extraccion temporal y de destino de los geoJson
-    tmp = 'tmp' # for extract ZIPs
-    geojson_folder = 'geojson' # for created json
-    shp_folder = 'shp' # for renamed shp
-    try: os.mkdir(tmp)
-    except: pass
-    
-    try: os.mkdir(geojson_folder)
-    except: pass
+tmp = 'tmp' # for extract ZIPs
+geojson_folder = 'geojson' # for created json
+shp_folder = 'shp' # for renamed shp
+errorGeoJson = None
+erroresGeoJson = 0
 
-    try: os.mkdir(shp_folder)
-    except: pass
+try: os.mkdir(tmp)
+except: pass
+
+try: os.mkdir(geojson_folder)
+except: pass
+
+try: os.mkdir(shp_folder)
+except: pass
 
         
 if doLevi:
@@ -109,7 +109,7 @@ for filename in archives:
             print fl
             exit(1)
             
-        command_parts = ["ogr2ogr", "-f", "GeoJSON", "-t_srs", "EPSG:4326","-s_srs", "EPSG:22194", dest_geojson, shp_orig]
+        command_parts = ["ogr2ogr", "-f", "GeoJSON", "-t_srs", "EPSG:4326","-s_srs", "EPSG:22194", "-skipfailures", dest_geojson, shp_orig]
         
         proc = subprocess.Popen(command_parts, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         stdout, stderr = proc.communicate()
@@ -121,12 +121,33 @@ for filename in archives:
                                'stdout': stdout.replace('\n', ''),
                                'stderr': stderr.replace('\n', '')})
             errorGeoJson = 'ERROR'
+            erroresGeoJson += 1
             fl = "Error geoJson %s [%s]-> %s" % (localidad, anio, tipo)
             full_log.append(fl)
             print fl
             
         else:
-             full_log.append("Process OK: %s " % shp_orig)
+            full_log.append("Process OK: %s " % shp_orig)
+
+        command_parts = ["ogr2ogr", "-f", "KML", "-t_srs", "EPSG:4326","-s_srs", "EPSG:22194", "-skipfailures", dest_geojson.replace('.geojson', '.kml'), shp_orig]
+        
+        proc = subprocess.Popen(command_parts, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        stdout, stderr = proc.communicate()
+
+        if proc.returncode != 0:
+            errores_gj.append({'muni': localidad,
+                               'command': ' '.join(command_parts), 
+                               'ret_code': proc.returncode,
+                               'stdout': stdout.replace('\n', ''),
+                               'stderr': stderr.replace('\n', '')})
+            errorGeoJson = 'ERROR KML'
+            erroresGeoJson += 1
+            fl = "Error KML %s [%s]-> %s" % (localidad, anio, tipo)
+            full_log.append(fl)
+            print fl
+            
+        else:
+            full_log.append("Process KML OK: %s " % shp_orig)
         
 
     if doLevi: # buscar por cada archivo cual es el municipio oficial mas parecido
@@ -264,7 +285,7 @@ if doLevi: # Ids usados de municipedia (salvo casos especiales ninguno debe ser 
     print "Repetidos (grave): %d" % repetidos
     print "No usados (no reciben datos en municipedia): %d" % nousados
     print "No los reconocemos (grave, se pierde el dato): %d" % len(IGNORES)
-    
+    print "Errores GeoJson: %d" % erroresGeoJson
 
     # errores de codificacion de OGR
     f = codecs.open('results/errores_gj.csv', 'w', encoding='utf8')

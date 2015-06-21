@@ -13,9 +13,7 @@ FILENAME_REPLACES = {'radio_poly- 2010': 'radio_poly - 2010',
                      'Villa Los Llanos - Juarez Celman': 'Villa Los Llanos Juarez Celman'}
     
 # ciudades no resuletas en municipedia
-IGNORES = [u'Villa La Rivera', 
-           u'Villa Los Llanos Juarez Celman', u'Villa Oeste', u'Villa Quilino', 
-           u'Villa Santa Eugenia', u'Yocsina']
+IGNORES = [] # usado temporalmente para anotar los que no identifico
 
 # reemplazos de municipios que cambian de nombre entre la denominacion que se les 
 # dio en el 2008 y en 2010. Necesito que estos dos sean el mismo
@@ -40,7 +38,9 @@ REPLACES = {u'Cura Brochero': u'Villa Cura Brochero',
             u'Ca¤ada del Sauce': u'Cañada del Sauce',
             u'Va Cdad Pque Los Reartes': u'Villa Ciudad Parque Los Reartes',
             u'Villa Maria': u'Villa María',
-            u'General Paz': u'Estación General Paz'}
+            u'General Paz': u'Estación General Paz',
+            u'Villa Los Llanos Juarez Celman': u'Estación Juárez Celman',
+            u'Canteras el Sauce': u'Canteras El Sauce'}
 
 # algunas ciudades tienen mapas de diferentes zonas. 
 # primero la zona extra, segundo la ciudad a la que corresponde
@@ -64,8 +64,10 @@ EXTRA_MAPS={u'B Nvo Rio Ceballos': {'nombre': u'Río Ceballos', 'tipomapa': u'Ba
             u'Loma Bola': {'nombre': u'La Paz', 'tipomapa': u'Loma Bola'},
             u'Quebracho Ladeado': {'nombre': u'La Paz', 'tipomapa': u'Quebracho Ladeado'},
             u'Santa Magdalena': {'nombre': u'Jovita', 'tipomapa': u'Santa Magdalena'},
-            u'': {'nombre': u'', 'tipomapa': u''},
-            u'': {'nombre': u'', 'tipomapa': u''},
+            u'Villa Oeste': {'nombre': u'Villa Nueva', 'tipomapa': u'Villa Oeste'},
+            u'Villa Quilino': {'nombre': u'Quilino', 'tipomapa': u'Villa Quilino'},
+            u'Villa Santa Eugenia': {'nombre': u'Alpa Corral', 'tipomapa': u'Villa Santa Eugenia'},
+            u'Yocsina': {'nombre': u'Malagueño', 'tipomapa': u'Yocsina'},
             }
 
         

@@ -1,8 +1,0 @@
-INSERT INTO  municipios (provincia_id , CodMuni , CodProv, municipio, latitud, longitud, direccion, cp, web, carta_organica, categoria, fundacion_anio, fundacion_mes, fundacion_dia, fundacion_descripcion, jefe_categoria, jefe)
-VALUES ('5',  '',  'CBA',  'Villa Berna',  '-30.5001594', '-64.4999871',  'Desconocido ',  '0',  '',  '',  'Desconocido',  '0',  '0',  '0',  '',  'Desconocido',  'Desconocido');
-
-INSERT INTO  municipios (provincia_id , CodMuni , CodProv, municipio, latitud, longitud, direccion, cp, web, carta_organica, categoria, fundacion_anio, fundacion_mes, fundacion_dia, fundacion_descripcion, jefe_categoria, jefe)
-VALUES ('5',  '',  'CBA',  '',  '', '',  'Desconocido ',  '0',  '',  '',  'Desconocido',  '0',  '0',  '0',  '',  'Desconocido',  'Desconocido');
-
-tomar datos de 
-http://hojaprovincial.cba.gov.ar/cordoba/ischilin/los-pozos/general/datos-generales
