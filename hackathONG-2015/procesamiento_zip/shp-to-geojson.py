@@ -3,12 +3,16 @@
 Leer un directorio y procesa todos sus archivos SHP-ZIP
 """
 
-import os, subprocess, sys, processer, json, glob
+import os, subprocess, sys, processer, json, glob, shutil
+from parses import *
+from slugify import slugify
 
 path = 'GeoPortal-Cordoba/localidades' # my default value
 total = 0 # do a full process. Use --total=3 for test 3 files
 doLevi=False # do a Levinshtein comparation
 doGeoJson=False # process shp to GeoJson
+full_log = []
+
 for arg in sys.argv:
     if arg == '-h' or arg == '--help':
         print "%s USAGE" % sys.argv[0]
@@ -27,22 +31,23 @@ for arg in sys.argv:
     
 archives = os.listdir(path)
 
+tipos = [] # todos los tipos para parsear a algo legible
+errores_gj = []
+    
 if doGeoJson:
     # crear las carpetas de extraccion temporal y de destino de los geoJson
     tmp = 'tmp' # for extract ZIPs
     geojson_folder = 'geojson' # for created json
-    try:
-        os.mkdir(tmp)
-    except:
-        pass
+    shp_folder = 'shp' # for renamed shp
+    try: os.mkdir(tmp)
+    except: pass
     
-    try:
-        os.mkdir(geojson_folder)
-    except:
-        pass
+    try: os.mkdir(geojson_folder)
+    except: pass
 
-    errores_gj = []
-    tipos = [] # todos los tipos para parsear a algo legible
+    try: os.mkdir(shp_folder)
+    except: pass
+
         
 if doLevi:
     import Levenshtein as levi
@@ -55,20 +60,28 @@ if doLevi:
     
 c=0
 for filename in archives:
+    full_log.append('---------------------------------------------------')
+    full_log.append('Process file %s' % filename)
+        
     name_attr = processer.process(filename)
     if not name_attr:
-        continue
+        fl = ' xxxxxxxx CANT use file %s' % filename
+        full_log.append(fl)
+        print fl
+        exit(1)
 
     depto, localidad, tipo, anio = name_attr
     if tipo not in tipos: # solo para hacer una lista completa de tipos usados
         tipos.append(tipo)
 
-    from parses import SHP_TYPES
     nice_tipo = SHP_TYPES.get(tipo, 'UNKNOWN SHP TYPE')
+    full_path_filename = os.path.join(path, filename)
     
     errorGeoJson = None # for using at Levi time if needed
     if doGeoJson:
-        file_dir = '%s_%s_%s_%s' % (depto.replace(' ',''), localidad.replace(' ',''), tipo.replace(' ',''), anio.replace(' ',''))
+        full_log.append(' ----- OGR for %s' % localidad)
+        
+        file_dir = '%s_%s_%s_%s' % (depto.replace(' ',''), localidad.replace(' ',''), nice_tipo.replace(' ',''), anio.replace(' ',''))
         
         try:
             dest = os.path.join(tmp, file_dir)
@@ -81,14 +94,19 @@ for filename in archives:
         shp_orig = glob.glob(os.path.join(os.getcwd(), dest, "*.shp"))[0]
         
         # borrar el geoJson de destino si ya existe
-        dest_geojson = os.path.join(geojson_folder,filename.replace('.zip', '.geojson')) # NO ESCAPAR PARA EL REMOVE (?), fallará)
+        fnamedest = filename.replace('.zip', '.geojson')
+        fnamedest = fnamedest.replace(' ', '-')
+        dest_geojson = os.path.join(geojson_folder,fnamedest) 
         
         proc = subprocess.Popen(['rm', dest_geojson], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         stdout, stderr = proc.communicate()
         if proc.returncode == 1:
+            full_log.append('Error removing %s (probably doesn\'t exists)' % dest_geojson)
             pass # No such file
         elif proc.returncode != 0:
-            print 'ERROR[%d] %s -- %s' % (proc.returncode, stdout, stderr)
+            fl = 'ERROR[%d] %s -- %s' % (proc.returncode, stdout, stderr)
+            full_log.append(fl)
+            print fl
             exit(1)
             
         command_parts = ["ogr2ogr", "-f", "GeoJSON", "-t_srs", "EPSG:4326","-s_srs", "EPSG:22194", dest_geojson, shp_orig]
@@ -103,50 +121,53 @@ for filename in archives:
                                'stdout': stdout.replace('\n', ''),
                                'stderr': stderr.replace('\n', '')})
             errorGeoJson = 'ERROR'
-            print "Error geoJson %s [%s]-> %s" % (localidad, anio, tipo)
+            fl = "Error geoJson %s [%s]-> %s" % (localidad, anio, tipo)
+            full_log.append(fl)
+            print fl
             
-            # exit(1)
-        # else:
-        #     print "Process OK: %s " % shp_orig
+        else:
+             full_log.append("Process OK: %s " % shp_orig)
         
 
     if doLevi: # buscar por cada archivo cual es el municipio oficial mas parecido
         fname = filename if type(filename) == unicode else unicode(filename.decode('utf8'))
         fname = fname.replace('.zip', '')
-
+        full_log.append(' ----- Leving MUNI %s' % fname)
         # suponemos que localidad esta SIEMPRE escrito igual pero no,
         # las de 2010 y 2008 pueden diferir ... (por ejemplo Monte Maiz esta con y sin acento)
         loc = localidad if type(localidad) == unicode else unicode(localidad.decode('utf8'))
+        # fix some none breaking space (used in latin 1)
+        loc = loc.replace(u'\xa0', u' ')
+        full_log.append('LOC: %s' % loc)
         
-        from parses import IGNORES
-        ignores = IGNORES
-        if loc in ignores:
-            print "Ignoring %s" % loc
+        if loc in IGNORES:
+            full_log.append("Ignoring %s (MARK) " % loc)
             continue
 
-        from parses import REPLACES
         replaces = REPLACES
-        
         if replaces.get(loc, False): 
-            print "REPLACING %s for %s" % (loc, replaces[loc])
+            full_log.append("REPLACING %s for %s" % (loc, replaces[loc]))
             loc = replaces[loc]
+        else:
+            full_log.append("NOT REPLACING %s (%s - %s)" % (loc, repr(loc), type(loc)))
+            
 
-        from parses import EXTRA_MAPS
         extra_maps = EXTRA_MAPS
-        
-                    
         if extra_maps.get(loc, False): 
-            print "ADDING %s for %s" % (loc, extra_maps[loc])
-            loc = extra_maps[loc]
-        
-        
-        #TODO limpiar tipos
+            full_log.append("ADDING %s for %s" % (loc, extra_maps[loc]))
+            nice_tipo = '%s %s' % (nice_tipo, extra_maps[loc]['tipomapa'])
+            loc = extra_maps[loc]['nombre']
+            
+        """ 
+        Mejorar los nombres de los campos interpretando los tipos con SHP_TYPES
         geojson_mcp_fld = 'geojson_mcp_' + tipo + " " + anio
         shp_mcp_fld = 'shp_mcp_' + tipo + " " + anio
+        """
+        geojson_mcp_fld = 'GeoJSON ' + nice_tipo + " " + anio
+        shp_mcp_fld = 'SHP ' + nice_tipo + " " + anio
 
-        geojson_mcp_fld = 'geojson_mcp_' + nice_tipo + " " + anio
-        shp_mcp_fld = 'shp_mcp_' + nice_tipo + " " + anio
-
+        full_log.append('TIPO from %s to %s' % (tipo, nice_tipo))
+        
         if final_munis.get(loc, False) == False:
             max_levi = 0.0
             final_id_minicipedia = None
@@ -161,6 +182,7 @@ for filename in archives:
                 
                 lev_res = levi.ratio(loc, muni)
                 if lev_res > max_levi:
+                    full_log.append('%s for %s is %.2f' % (muni, loc, lev_res))
                     max_levi = lev_res
                     geoJsonFile = fname + '.geojson' if not errorGeoJson else errorGeoJson
                     final_loc[loc] = {'muni': muni, 'muni_id': m['id'], 'max_levi': lev_res, 'filename': fname}
@@ -170,14 +192,45 @@ for filename in archives:
                     final_id_minicipedia = m['id']
                     final_muni = muni
                     
-            if final_muni:
+            if final_muni: # es la primera coincidencia de un municipio
+                full_log.append('USED [muni_id:%s] %s # %d' % (str(final_id_minicipedia), loc, final_municipedia[final_id_minicipedia]['used']))
                 final_municipedia[final_id_minicipedia]['uses'].append({'localidad': loc, 'depto':depto, 'levi': lev_res})
                 final_municipedia[final_id_minicipedia]['used'] += 1
+                # aprovecho para copiar el SHP a un nuevo nombre (ahora que se a que municipio corresponde)
+                new_filename = slugify('%s_%s_%s' % (final_muni, nice_tipo, anio))
+                new_filename_shp = '%s.shp.zip' % new_filename
+                new_filename_gj = '%s.geojson' % new_filename
+                new_path_shpfile = os.path.join(shp_folder, new_filename_shp)
+                new_path_gjfile = os.path.join(geojson_folder, new_filename_gj)
+                shutil.copy(full_path_filename, new_path_shpfile)
+                final_munis[loc][shp_mcp_fld] = new_filename_shp
+                # move old geoJSON to new
+                shutil.move(dest_geojson, new_path_gjfile)
+                final_munis[loc][geojson_mcp_fld] = new_filename_gj
+                
                 
         else: #el mejor levi ya fue definido
             # ya detecte el municpio pero este es otro mapa distinto que necesito tambien
+            full_log.append('Add %s field for %s' % (geojson_mcp_fld, loc))
             final_munis[loc][geojson_mcp_fld] = fname + '.geojson' if not errorGeoJson else errorGeoJson
-            final_munis[loc][shp_mcp_fld] = fname + '.shp'
+            # final_munis[loc][shp_mcp_fld] = fname + '.shp'
+            
+            finalmuni = final_munis[loc]['muni_municipedia']
+            # aprovecho para copiar el SHP a un nuevo nombre (ahora que se a que municipio corresponde)
+            
+            # aprovecho para copiar el SHP a un nuevo nombre (ahora que se a que municipio corresponde)
+            new_filename = slugify('%s_%s_%s' % (finalmuni, nice_tipo, anio))
+            new_filename_shp = '%s.shp.zip' % new_filename
+            new_filename_gj = '%s.geojson' % new_filename
+            new_path_shpfile = os.path.join(shp_folder, new_filename_shp)
+            new_path_gjfile = os.path.join(geojson_folder, new_filename_gj)
+            shutil.copy(full_path_filename, new_path_shpfile)
+            final_munis[loc][shp_mcp_fld] = new_filename_shp
+            # move old geoJSON to new
+            shutil.move(dest_geojson, new_path_gjfile)
+            final_munis[loc][geojson_mcp_fld] = new_filename_gj
+                
+            
             
     c += 1
     if total > 0 and c >= total: break
@@ -191,17 +244,27 @@ if doLevi: # Ids usados de municipedia (salvo casos especiales ninguno debe ser 
     import codecs
     f = codecs.open('results/errores.csv', 'w', encoding='utf8')
     f.write('id,nombre,error,detalle')
+    repetidos = 0
+    nousados = 0
+    
     for i, v in final_municipedia.iteritems():
         if v['used'] > 1:
             error = 'Usado %s veces' % v['used']
             f.write('\n%s,%s,%s,%s' % (i, v['name'], 'repetido', error))
+            repetidos += 1
         elif v['used'] == 0:
+            nousados += 1
             f.write('\n%s,%s,%s,' % (i, v['name'], 'no usado'))
             
-    for i in ignores:
+    for i in IGNORES:
         f.write('\n%s,%s,%s,' % (0, i, 'no detectado'))
 
     f.close()
+
+    print "Repetidos (grave): %d" % repetidos
+    print "No usados (no reciben datos en municipedia): %d" % nousados
+    print "No los reconocemos (grave, se pierde el dato): %d" % len(IGNORES)
+    
 
     # errores de codificacion de OGR
     f = codecs.open('results/errores_gj.csv', 'w', encoding='utf8')
@@ -223,6 +286,12 @@ if doLevi: # Ids usados de municipedia (salvo casos especiales ninguno debe ser 
         f.write('\n%s' % t)
     f.close()
 
+    # full_log
+    f = codecs.open('results/full.log', 'w', encoding='utf8')
+    for t in full_log:
+        if type(t) == str: t = t.decode('utf8')
+        f.write('\n%s' % t)
+    f.close()
 
     # listar todos los campos del CSV final. 
     # esto es el formato similar a lo que municipedia necesita. Una fila
