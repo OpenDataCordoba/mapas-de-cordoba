@@ -123,6 +123,7 @@ for filename in archives:
             errorGeoJson = 'ERROR'
             erroresGeoJson += 1
             fl = "Error geoJson %s [%s]-> %s" % (localidad, anio, tipo)
+            full_log.append(' '.join(command_parts))
             full_log.append(fl)
             print fl
             
@@ -143,6 +144,7 @@ for filename in archives:
             errorGeoJson = 'ERROR KML'
             erroresGeoJson += 1
             fl = "Error KML %s [%s]-> %s" % (localidad, anio, tipo)
+            full_log.append(' '.join(command_parts))
             full_log.append(fl)
             print fl
             

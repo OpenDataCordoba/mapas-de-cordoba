@@ -7,3 +7,13 @@ Posiblemete la proxeccion no sea la correcta
 
 tomar datos de 
 http://hojaprovincial.cba.gov.ar/cordoba/ischilin/los-pozos/general/datos-generales
+
+Probar que las proyecciones esperadas sean las correctas
+
+ogr2ogr -f GeoJSON -t_srs EPSG:4326 -s_srs EPSG:22194 -skipfailures mendio94.geojson /home/saul/dev/mapas-de-cordoba/hackathONG-2015/procesamiento_zip/tmp/Colon_Mendiolaza_Ejes_2010/mendiolaza_ejes_2010.shp
+
+ogr2ogr -f GeoJSON -t_srs EPSG:4326 -s_srs EPSG:22195 -skipfailures mendio95.geojson /home/saul/dev/mapas-de-cordoba/hackathONG-2015/procesamiento_zip/tmp/Colon_Mendiolaza_Ejes_2010/mendiolaza_ejes_2010.shp
+
+ogr2ogr -f GeoJSON -t_srs EPSG:4326 -s_srs EPSG:22196 -skipfailures mendio96.geojson /home/saul/dev/mapas-de-cordoba/hackathONG-2015/procesamiento_zip/tmp/Colon_Mendiolaza_Ejes_2010/mendiolaza_ejes_2010.shp
+
+ogr2ogr -f GeoJSON -t_srs EPSG:4326 -s_srs EPSG:22197 -skipfailures mendio97.geojson /home/saul/dev/mapas-de-cordoba/hackathONG-2015/procesamiento_zip/tmp/Colon_Mendiolaza_Ejes_2010/mendiolaza_ejes_2010.shp
