@@ -5,6 +5,13 @@ Revisar ñla desviacion del JSON
 https://github.com/OpenDataCordoba/mapas-de-cordoba/blob/master/hackathONG-2015/procesamiento_zip/geojson/mendiolaza_ejes_2010.geojson
 Posiblemete la proxeccion no sea la correcta
 
+Revisar las proyecciones desde 2010 desde
+http://estadistica.cba.gov.ar/LinkClick.aspx?fileticket=JUzWHrlLmlY%3d&tabid=672&language=es-AR
+
+Las de 2008 estan por separado, cada archivo de metadatos esta por separado
+
+Al parecer la proyeccion http://spatialreference.org/ref/epsg/22174/ tambien se usa. Listar cuales usan esa y probar de nuevo
+
 tomar datos de 
 http://hojaprovincial.cba.gov.ar/cordoba/ischilin/los-pozos/general/datos-generales
 
