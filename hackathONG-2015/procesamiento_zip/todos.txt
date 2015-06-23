@@ -7,6 +7,7 @@ Posiblemete la proxeccion no sea la correcta
 
 Revisar las proyecciones desde 2010 desde
 http://estadistica.cba.gov.ar/LinkClick.aspx?fileticket=JUzWHrlLmlY%3d&tabid=672&language=es-AR
+(ya se leyo el PDF con TABULA)
 
 Las de 2008 estan por separado, cada archivo de metadatos esta por separado
 
