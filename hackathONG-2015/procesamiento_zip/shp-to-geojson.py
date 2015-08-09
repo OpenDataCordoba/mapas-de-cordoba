@@ -59,6 +59,9 @@ if doLevi:
     final_loc = {} # relacion final localidad -> municipio
     
 c=0
+
+from ogr import MyOGR
+
 for filename in archives:
     full_log.append('---------------------------------------------------')
     full_log.append('Process file %s' % filename)
@@ -108,49 +111,40 @@ for filename in archives:
             full_log.append(fl)
             print fl
             exit(1)
-            
-        command_parts = ["ogr2ogr", "-f", "GeoJSON", "-t_srs", "EPSG:4326","-s_srs", "EPSG:22194", "-skipfailures", dest_geojson, shp_orig]
-        
-        proc = subprocess.Popen(command_parts, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        stdout, stderr = proc.communicate()
 
-        if proc.returncode != 0:
-            errores_gj.append({'muni': localidad,
-                               'command': ' '.join(command_parts), 
-                               'ret_code': proc.returncode,
-                               'stdout': stdout.replace('\n', ''),
-                               'stderr': stderr.replace('\n', '')})
+
+        # procesar con el comando OGR2OGR a GeoJSON
+        myORG = MyOGR(localidad, anio, tipo)
+        resOGR, errorOGR = myORG.doit(shp_orig=shp_orig, dest_file=dest_geojson,
+                                      projection_origin="EPSG:22194", projection_dest="EPSG:4326", 
+                                      format_dest='GeoJSON')
+        if not resOGR:
+            errores_gj.append(myOGR.lastError)
             errorGeoJson = 'ERROR'
             erroresGeoJson += 1
-            fl = "Error geoJson %s [%s]-> %s" % (localidad, anio, tipo)
-            full_log.append(' '.join(command_parts))
-            full_log.append(fl)
-            print fl
+            full_log.append(errorOGR)
+            print errorOGR
             
         else:
             full_log.append("Process OK: %s " % shp_orig)
 
-        command_parts = ["ogr2ogr", "-f", "KML", "-t_srs", "EPSG:4326","-s_srs", "EPSG:22194", "-skipfailures", dest_geojson.replace('.geojson', '.kml'), shp_orig]
-        
-        proc = subprocess.Popen(command_parts, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        stdout, stderr = proc.communicate()
-
-        if proc.returncode != 0:
-            errores_gj.append({'muni': localidad,
-                               'command': ' '.join(command_parts), 
-                               'ret_code': proc.returncode,
-                               'stdout': stdout.replace('\n', ''),
-                               'stderr': stderr.replace('\n', '')})
-            errorGeoJson = 'ERROR KML'
+        # procesar con el comando OGR2OGR a KML
+        dest_kml = dest_geojson.replace('.geojson', '.kml')
+        myORG = MyOGR(localidad, anio, tipo)
+        resOGR, errorOGR = myORG.doit(shp_orig=shp_orig, dest_file=dest_kml, 
+                                      projection_origin="EPSG:22194", projection_dest="EPSG:4326", 
+                                      format_dest='KML')
+        if not resOGR:
+            errores_gj.append(myOGR.lastError)
+            errorGeoJson = 'ERROR'
             erroresGeoJson += 1
-            fl = "Error KML %s [%s]-> %s" % (localidad, anio, tipo)
-            full_log.append(' '.join(command_parts))
-            full_log.append(fl)
-            print fl
+            full_log.append(errorOGR)
+            print errorOGR
             
         else:
-            full_log.append("Process KML OK: %s " % shp_orig)
-        
+            full_log.append("Process OK: %s " % shp_orig)
+
+
 
     if doLevi: # buscar por cada archivo cual es el municipio oficial mas parecido
         fname = filename if type(filename) == unicode else unicode(filename.decode('utf8'))
