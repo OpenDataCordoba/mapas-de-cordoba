@@ -27,6 +27,7 @@ class Projections:
     
 
 if __name__ == "__main__":
+    """ mostrar la cantidad de proyecciones detectadas y cuanto se usan"""
     p = Projections()
     print "======================="
     print "Proyecciones detectadas"
