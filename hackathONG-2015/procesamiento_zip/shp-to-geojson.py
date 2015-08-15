@@ -41,6 +41,10 @@ except: pass
 import Levenshtein as levi
 from munis import getMunis
 munis = getMunis().munis # obtener los municipios de municipedia
+from find_muni_name import LeviMuni
+myLevi = LeviMuni(munis=munis)
+
+
 munis_missing = list(munis) # copia para saber cuales no se usan
 final_munis = {} # relacion final desde el lado de los nombres de los archivos (localidad + tipo + anio)
 final_municipedia = {} # uso de los IDs de municipedia
