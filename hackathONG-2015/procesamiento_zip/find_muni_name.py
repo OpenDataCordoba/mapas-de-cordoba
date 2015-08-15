@@ -14,11 +14,12 @@ class LeviMuni():
         final = None
         for m in self.munis: # munis es mi base oficial de Municipedia
             muni = m['municipio'] if type(m['municipio']) == unicode else unicode(m['municipio'].decode('utf8'))
+            municipio = municipio if type(municipio) == unicode else unicode(municipio.decode('utf-8'))
             
             lev_res = levi.ratio(municipio, muni)
             if lev_res > max_levi:
                 max_levi = lev_res
-                final = m
+                final = {'m': m, 'levi': lev_res}
                 
         return final
 
@@ -30,14 +31,25 @@ if __name__ == "__main__":
     lm = LeviMuni(munis=munis)
 
     import csv
-    reader = csv.reader('metadatos-2010/Paso-2--metadatos-by-tabulapdf.csv')
+    path = 'metadatos-2010/Paso-2--metadatos-by-tabulapdf.csv'
+    f = open(path, 'r')
+    reader = csv.reader(f)
 
     for p in reader:
-        depto, city, projection = p
-        muni = lm.find(city)
-        if not muni:
+        try:
+            depto, city, projection = p
+        except Exception, e:
+            print "Error line %s => %s" % (str(p), str(e))
+            exit(1)
+            
+        m = lm.find(city)
+            
+        if not m:
             print "NO %s " % city
         else:
-            print "SI %s == %s" % (city, muni['municipio'])
+            lev = m['levi'] 
+            muni = m['m']['municipio'] if type(m['m']['municipio']) == unicode else unicode(m['m']['municipio'].decode('utf8'))
+            city = city if type(city) == unicode else unicode(city.decode('utf8'))
+            print "SI %s %s == %s" % (str(lev), city, muni)
         
     
