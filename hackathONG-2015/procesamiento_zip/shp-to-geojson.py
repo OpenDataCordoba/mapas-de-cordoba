@@ -84,7 +84,10 @@ for filename in archives:
     shp_orig = glob.glob(os.path.join(os.getcwd(), dest, "*.shp"))[0]
 
 
-
+    # ver que proyeccion tiene segun los metadatos de 2010 
+    # (supongo que es una extension de 2008 y es lo mismo)
+    
+    
 
 
 
@@ -179,7 +182,7 @@ for filename in archives:
         max_levi = 0.0
         final_id_minicipedia = None
         final_muni = None
-        for m in munis:
+        for m in munis: # munis es mi base oficial de Municipedia
             muni = m['municipio'] if type(m['municipio']) == unicode else unicode(m['municipio'].decode('utf8'))
             
             # asegurarse que todo se inicialicen con cero usos
