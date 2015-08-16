@@ -38,12 +38,12 @@ except: pass
 try: os.mkdir(shp_folder)
 except: pass
         
-import Levenshtein as levi
 from munis import getMunis
 munis = getMunis().munis # obtener los municipios de municipedia
 from find_muni_name import LeviMuni
 myLevi = LeviMuni(munis=munis)
-
+# cargar las proyecciones vinculadas a IDs de municipedia
+myLevi.load()
 
 munis_missing = list(munis) # copia para saber cuales no se usan
 final_munis = {} # relacion final desde el lado de los nombres de los archivos (localidad + tipo + anio)
@@ -91,58 +91,6 @@ for filename in archives:
     # ver que proyeccion tiene segun los metadatos de 2010 
     # (supongo que es una extension de 2008 y es lo mismo)
     
-    
-
-
-
-
-
-
-    
-    # borrar el geoJson de destino si ya existe
-    fnamedest = filename.replace('.zip', '.geojson')
-    fnamedest = fnamedest.replace(' ', '-')
-    dest_geojson = os.path.join(geojson_folder,fnamedest) 
-    
-    proc = subprocess.Popen(['rm', dest_geojson], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    stdout, stderr = proc.communicate()
-    if proc.returncode == 1:
-        full_log.append('Error removing %s (probably doesn\'t exists)' % dest_geojson)
-        pass # No such file
-    elif proc.returncode != 0:
-        fl = 'ERROR[%d] %s -- %s' % (proc.returncode, stdout, stderr)
-        full_log.append(fl)
-        print fl
-        exit(1)
-
-
-    # procesar con el comando OGR2OGR a GeoJSON
-    myOGR.load(localidad, anio, tipo)
-    
-    resOGR, errorOGR = myOGR.doit(shp_orig=shp_orig, dest_file=dest_geojson,
-                                  projection_origin="EPSG:22194", projection_dest="EPSG:4326", 
-                                  format_dest='GeoJSON')
-    if not resOGR:
-        full_log.append(errorOGR)
-        print errorOGR
-        
-    else:
-        full_log.append("Process OK: %s " % shp_orig)
-
-    # procesar con el comando OGR2OGR a KML
-    dest_kml = dest_geojson.replace('.geojson', '.kml')
-    resOGR, errorOGR = myOGR.doit(shp_orig=shp_orig, dest_file=dest_kml, 
-                                  projection_origin="EPSG:22194", projection_dest="EPSG:4326", 
-                                  format_dest='KML')
-    if not resOGR:
-        full_log.append(errorOGR)
-        print errorOGR
-        
-    else:
-        full_log.append("Process OK: %s " % shp_orig)
-
-
-
     # buscar por cada archivo cual es el municipio oficial mas parecido segun Levi
     fname = filename if type(filename) == unicode else unicode(filename.decode('utf8'))
     fname = fname.replace('.zip', '')
@@ -172,11 +120,7 @@ for filename in archives:
         nice_tipo = '%s %s' % (nice_tipo, extra_maps[loc]['tipomapa'])
         loc = extra_maps[loc]['nombre']
         
-    """ 
-    Mejorar los nombres de los campos interpretando los tipos con SHP_TYPES
-    geojson_mcp_fld = 'geojson_mcp_' + tipo + " " + anio
-    shp_mcp_fld = 'shp_mcp_' + tipo + " " + anio
-    """
+    # Mejorar los nombres de los campos interpretando los tipos con SHP_TYPES
     geojson_mcp_fld = 'GeoJSON ' + nice_tipo + " " + anio
     shp_mcp_fld = 'SHP ' + nice_tipo + " " + anio
 
@@ -243,6 +187,63 @@ for filename in archives:
         # move old geoJSON to new
         shutil.move(dest_geojson, new_path_gjfile)
         final_munis[loc][geojson_mcp_fld] = new_filename_gj
+
+
+
+
+        
+
+
+
+
+
+
+    
+    # borrar el geoJson de destino si ya existe
+    fnamedest = filename.replace('.zip', '.geojson')
+    fnamedest = fnamedest.replace(' ', '-')
+    dest_geojson = os.path.join(geojson_folder,fnamedest) 
+    
+    proc = subprocess.Popen(['rm', dest_geojson], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    stdout, stderr = proc.communicate()
+    if proc.returncode == 1:
+        full_log.append('Error removing %s (probably doesn\'t exists)' % dest_geojson)
+        pass # No such file
+    elif proc.returncode != 0:
+        fl = 'ERROR[%d] %s -- %s' % (proc.returncode, stdout, stderr)
+        full_log.append(fl)
+        print fl
+        exit(1)
+
+
+    # procesar con el comando OGR2OGR a GeoJSON
+    myOGR.load(localidad, anio, tipo)
+    
+    resOGR, errorOGR = myOGR.doit(shp_orig=shp_orig, dest_file=dest_geojson,
+                                  projection_origin="EPSG:22194", projection_dest="EPSG:4326", 
+                                  format_dest='GeoJSON')
+    if not resOGR:
+        full_log.append(errorOGR)
+        print errorOGR
+        
+    else:
+        full_log.append("Process OK: %s " % shp_orig)
+
+    # procesar con el comando OGR2OGR a KML
+    dest_kml = dest_geojson.replace('.geojson', '.kml')
+    resOGR, errorOGR = myOGR.doit(shp_orig=shp_orig, dest_file=dest_kml, 
+                                  projection_origin="EPSG:22194", projection_dest="EPSG:4326", 
+                                  format_dest='KML')
+    if not resOGR:
+        full_log.append(errorOGR)
+        print errorOGR
+        
+    else:
+        full_log.append("Process OK: %s " % shp_orig)
+
+
+
+    
                 
             
             

@@ -15,6 +15,14 @@ FILENAME_REPLACES = {'radio_poly- 2010': 'radio_poly - 2010',
 # ciudades no resuletas en municipedia
 IGNORES = [] # usado temporalmente para anotar los que no identifico
 
+# Ciudaes a ignorar en la busqueda de la lista de proyecciones
+IGNORES_PROY = ['VILLA REDUCCION', 'VILLA QUILINO', 'VILLA OESTE',
+                'SANTA MARIA DE PUNILLA', 'BARRIO NUEVO RIO CEBALLOS',
+                'GENERAL PAZ', 'YOCSINA', 'VILLA STA. EUGENIA',
+                'SAN IGNACIO  (LOTEO SAN JAVIER)',
+                'COUNTRY SAN ISIDRO - COUNTRY CHACRAS DE LA VILLA',
+                'BROWN - GUIÑAZU NORTE - 1 DE AGOSTO']
+
 # reemplazos de municipios que cambian de nombre entre la denominacion que se les 
 # dio en el 2008 y en 2010. Necesito que estos dos sean el mismo
 REPLACES = {u'Cura Brochero': u'Villa Cura Brochero', 
@@ -42,10 +50,12 @@ REPLACES = {u'Cura Brochero': u'Villa Cura Brochero',
             u'Villa Los Llanos Juarez Celman': u'Estación Juárez Celman',
             u'Canteras el Sauce': u'Canteras El Sauce'}
 
+REPLACES_PROY={u'VILLAS LOS LLANOS - JUAREZ CELMAN': u'Estación Juárez Celman'}
+
 # algunas ciudades tienen mapas de diferentes zonas. 
 # primero la zona extra, segundo la ciudad a la que corresponde
 # se le adapta el nombre para que levi funcione y se agrega un sufijo para el tipo de mapa
-# Con esto se creara un nuevo campo para la base de datos en la misma ciudad.Albertina
+# Con esto se creara un nuevo campo para la base de datos en la misma ciudad.
 # Hecho asi todos estos mapas extras apareceran como parte de la misma ciudad
 EXTRA_MAPS={u'B Nvo Rio Ceballos': {'nombre': u'Río Ceballos', 'tipomapa': u'Barrio Nuevo'},
             u'Va Cdad Pque Los Reartes  1 Seccion': {'nombre': u'Villa Ciudad Parque Los Reartes', 'tipomapa': u'Seccion 1'},
