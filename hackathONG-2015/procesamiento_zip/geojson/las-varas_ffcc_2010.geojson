@@ -1,0 +1,7 @@
+{
+"type": "FeatureCollection",
+"features": [
+{ "type": "Feature", "properties": { "FNODE_": 2.000000, "TNODE_": 1.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 2246.408000, "N1240_": 1.000000, "N1240_ID": 1.000000, "CODIGO": 99915, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "FCGBM", "NOM_NOR": "FCGBM" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.626705, -31.805770 ], [ -62.619417, -31.800451 ], [ -62.608628, -31.792652 ] ] } }
+
+]
+}

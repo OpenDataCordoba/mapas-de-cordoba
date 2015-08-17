@@ -1,0 +1,19 @@
+{
+"type": "FeatureCollection",
+"features": [
+{ "type": "Feature", "properties": { "FNODE_": 1.000000, "TNODE_": 2.000000, "LPOLY_": 1.000000, "RPOLY_": 1.000000, "LENGTH": 1271.084970, "N0346_": 1.000000, "N0346_ID": 1.000000, "CODIGO": 99915, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "FCGBM", "NOM_NOR": "FCGBM" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.434523, -33.647666 ], [ -62.421098, -33.649957 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 2.000000, "TNODE_": 3.000000, "LPOLY_": 1.000000, "RPOLY_": 1.000000, "LENGTH": 395.875300, "N0346_": 2.000000, "N0346_ID": 2.000000, "CODIGO": 99915, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "FCGBM", "NOM_NOR": "FCGBM" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.421098, -33.649957 ], [ -62.416916, -33.650667 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 3.000000, "TNODE_": 4.000000, "LPOLY_": 1.000000, "RPOLY_": 1.000000, "LENGTH": 522.185070, "N0346_": 3.000000, "N0346_ID": 3.000000, "CODIGO": 99915, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "FCGBM", "NOM_NOR": "FCGBM" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.416916, -33.650667 ], [ -62.411400, -33.651610 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 4.000000, "TNODE_": 5.000000, "LPOLY_": 1.000000, "RPOLY_": 1.000000, "LENGTH": 387.248310, "N0346_": 4.000000, "N0346_ID": 7.000000, "CODIGO": 99915, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "FCGBM", "NOM_NOR": "FCGBM" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.411400, -33.651610 ], [ -62.407310, -33.652307 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 5.000000, "TNODE_": 6.000000, "LPOLY_": 1.000000, "RPOLY_": 1.000000, "LENGTH": 373.909410, "N0346_": 5.000000, "N0346_ID": 4.000000, "CODIGO": 99915, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "FCGBM", "NOM_NOR": "FCGBM" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.407310, -33.652307 ], [ -62.403360, -33.652978 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 6.000000, "TNODE_": 7.000000, "LPOLY_": 1.000000, "RPOLY_": 1.000000, "LENGTH": 1047.306070, "N0346_": 6.000000, "N0346_ID": 5.000000, "CODIGO": 99915, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "FCGBM", "NOM_NOR": "FCGBM" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.403360, -33.652978 ], [ -62.392297, -33.654863 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 7.000000, "TNODE_": 8.000000, "LPOLY_": 1.000000, "RPOLY_": 1.000000, "LENGTH": 339.788540, "N0346_": 7.000000, "N0346_ID": 6.000000, "CODIGO": 99915, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "FCGBM", "NOM_NOR": "FCGBM" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.392297, -33.654863 ], [ -62.388708, -33.655476 ] ] } }
+
+]
+}

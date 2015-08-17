@@ -1,0 +1,15 @@
+{
+"type": "FeatureCollection",
+"features": [
+{ "type": "Feature", "properties": { "FNODE_": 1.000000, "TNODE_": 2.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 242.012910, "N0418_": 1.000000, "N0418_ID": 1.000000, "CODIGO": 99920, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "FCGB", "NOM_NOR": "FCGB" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.310492, -31.418768 ], [ -62.307947, -31.418777 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 3.000000, "TNODE_": 1.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 378.526750, "N0418_": 2.000000, "N0418_ID": 2.000000, "CODIGO": 99920, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "FCGB", "NOM_NOR": "FCGB" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.314472, -31.418748 ], [ -62.310492, -31.418768 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 4.000000, "TNODE_": 3.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 518.529170, "N0418_": 3.000000, "N0418_ID": 3.000000, "CODIGO": 99920, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "FCGB", "NOM_NOR": "FCGB" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.319925, -31.418728 ], [ -62.314472, -31.418748 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 5.000000, "TNODE_": 4.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 369.521650, "N0418_": 4.000000, "N0418_ID": 4.000000, "CODIGO": 99920, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "FCGB", "NOM_NOR": "FCGB" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.323811, -31.418712 ], [ -62.319925, -31.418728 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 6.000000, "TNODE_": 5.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 156.507190, "N0418_": 5.000000, "N0418_ID": 5.000000, "CODIGO": 99920, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "FCGB", "NOM_NOR": "FCGB" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.325457, -31.418708 ], [ -62.323811, -31.418712 ] ] } }
+
+]
+}

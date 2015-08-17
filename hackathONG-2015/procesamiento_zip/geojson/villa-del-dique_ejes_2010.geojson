@@ -1,0 +1,7 @@
+{
+"type": "FeatureCollection",
+"features": [
+{ "type": "Feature", "properties": { "FNODE_": 578.000000, "TNODE_": 579.000000, "LPOLY_": 344.000000, "RPOLY_": 337.000000, "LENGTH": 9.143370, "EVD05_": 906.000000, "EVD05_ID": 906.000000, "CODIGO": 4515, "ANCHO": 30, "ANCHOMED": 15.000000, "NOMBRE": "AV DE LOS NAVEGANTES", "NOM_NOR": "AV DE LOS NAVEGANTES", "LADOI": 0, "LADOD": 0, "DESDEI": 0, "DESDED": 0, "HASTAI": 0, "HASTAD": 0, "MZAI": "", "MZAD": "", "CONTEOI": 0, "CONTEOD": 0, "LISTADOI": 0, "LISTADOD": 0, "COLECTI": 0, "COLECTD": 0, "CONSTRI": 0, "CONSTRD": 0, "OBSERI": "", "OBSERD": "" }, "geometry": { "type": "LineString", "coordinates": [ [ -64.443956, -32.188623 ], [ -64.444008, -32.188633 ], [ -64.444050, -32.188641 ] ] } }
+
+]
+}

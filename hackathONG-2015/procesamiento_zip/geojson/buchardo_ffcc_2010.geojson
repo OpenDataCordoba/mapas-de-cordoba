@@ -1,0 +1,7 @@
+{
+"type": "FeatureCollection",
+"features": [
+{ "type": "Feature", "properties": { "FNODE_": 2.000000, "TNODE_": 1.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 2680.285740, "N0865_": 1.000000, "N0865_ID": 1.000000, "CODIGO": 99930, "ANCHO": 20, "ANCHOMED": 10.000000, "NOMBRE": "FCGSM", "NOM_NOR": "FCGSM" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.522476, -34.725433 ], [ -63.495014, -34.717093 ] ] } }
+
+]
+}

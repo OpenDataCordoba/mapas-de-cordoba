@@ -1,0 +1,7 @@
+{
+"type": "FeatureCollection",
+"features": [
+{ "type": "Feature", "properties": { "FNODE_": 1.000000, "TNODE_": 2.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 3306.250290, "N2384_": 1.000000, "N2384_ID": 1.000000, "CODIGO": 99920, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "FCGB", "NOM_NOR": "FCGB" }, "geometry": { "type": "LineString", "coordinates": [ [ -65.648256, -30.795561 ], [ -65.654659, -30.799477 ], [ -65.660288, -30.802839 ], [ -65.665535, -30.806238 ], [ -65.670330, -30.809212 ], [ -65.676281, -30.812956 ] ] } }
+
+]
+}

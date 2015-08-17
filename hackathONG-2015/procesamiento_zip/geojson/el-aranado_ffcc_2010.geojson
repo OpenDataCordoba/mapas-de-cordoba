@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"features": [
+{ "type": "Feature", "properties": { "FNODE_": 2.000000, "TNODE_": 3.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 113.602020, "N1086_": 1.000000, "N1086_ID": 1.000000, "CODIGO": 99940, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "CALLE PROYECTADA", "NOM_NOR": "CALLE PROYECTADA" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.895226, -31.737672 ], [ -62.895546, -31.738054 ], [ -62.895922, -31.738506 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 1.000000, "TNODE_": 4.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 2735.928110, "N1086_": 2.000000, "N1086_ID": 2.000000, "CODIGO": 99915, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "FCGBM", "NOM_NOR": "FCGBM" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.908841, -31.733570 ], [ -62.897411, -31.740657 ], [ -62.885479, -31.748070 ] ] } }
+
+]
+}

@@ -1,0 +1,13 @@
+{
+"type": "FeatureCollection",
+"features": [
+{ "type": "Feature", "properties": { "FNODE_": 2.000000, "TNODE_": 3.000000, "LPOLY_": 1.000000, "RPOLY_": 3.000000, "LENGTH": 409.006420, "E1072_": 2.000000, "E1072_ID": 2.000000, "CODIGO": 99952, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "LIM LOTE", "NOM_NOR": "LIM LOTE", "LADOI": 1, "LADOD": 0, "DESDEI": 0, "DESDED": 0, "HASTAI": 0, "HASTAD": 0, "MZAI": "140980900408001", "MZAD": "", "CONTEOI": 0, "CONTEOD": 0, "LISTADOI": 0, "LISTADOD": 0, "COLECTI": 0, "COLECTD": 0, "CONSTRI": 0, "CONSTRD": 0, "OBSERI": "", "OBSERD": "" }, "geometry": { "type": "LineString", "coordinates": [ [ -64.345193, -32.839486 ], [ -64.340864, -32.839979 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 64.000000, "TNODE_": 43.000000, "LPOLY_": 34.000000, "RPOLY_": 1.000000, "LENGTH": 304.754410, "E1072_": 98.000000, "E1072_ID": 98.000000, "CODIGO": 99952, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "LIM LOTE", "NOM_NOR": "LIM LOTE", "LADOI": 0, "LADOD": 2, "DESDEI": 0, "DESDED": 0, "HASTAI": 0, "HASTAD": 0, "MZAI": "", "MZAD": "140980900408011", "CONTEOI": 0, "CONTEOD": 0, "LISTADOI": 0, "LISTADOD": 0, "COLECTI": 0, "COLECTD": 0, "CONSTRI": 0, "CONSTRD": 0, "OBSERI": "", "OBSERD": "" }, "geometry": { "type": "LineString", "coordinates": [ [ -64.344151, -32.849762 ], [ -64.342376, -32.847459 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 64.000000, "TNODE_": 78.000000, "LPOLY_": 1.000000, "RPOLY_": 47.000000, "LENGTH": 281.706410, "E1072_": 123.000000, "E1072_ID": 123.000000, "CODIGO": 99952, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "LIM LOTE", "NOM_NOR": "LIM LOTE", "LADOI": 2, "LADOD": 0, "DESDEI": 0, "DESDED": 0, "HASTAI": 0, "HASTAD": 0, "MZAI": "140980900408021", "MZAD": "", "CONTEOI": 0, "CONTEOD": 0, "LISTADOI": 0, "LISTADOD": 0, "COLECTI": 0, "COLECTD": 0, "CONSTRI": 0, "CONSTRD": 0, "OBSERI": "", "OBSERD": "" }, "geometry": { "type": "LineString", "coordinates": [ [ -64.344151, -32.849762 ], [ -64.345802, -32.851885 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 78.000000, "TNODE_": 85.000000, "LPOLY_": 1.000000, "RPOLY_": 52.000000, "LENGTH": 115.965510, "E1072_": 134.000000, "E1072_ID": 134.000000, "CODIGO": 99952, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "LIM LOTE", "NOM_NOR": "LIM LOTE", "LADOI": 2, "LADOD": 0, "DESDEI": 0, "DESDED": 0, "HASTAI": 0, "HASTAD": 0, "MZAI": "140980900408028", "MZAD": "", "CONTEOI": 0, "CONTEOD": 0, "LISTADOI": 0, "LISTADOD": 0, "COLECTI": 0, "COLECTD": 0, "CONSTRI": 0, "CONSTRD": 0, "OBSERI": "", "OBSERD": "" }, "geometry": { "type": "LineString", "coordinates": [ [ -64.345802, -32.851885 ], [ -64.346477, -32.852761 ] ] } }
+
+]
+}

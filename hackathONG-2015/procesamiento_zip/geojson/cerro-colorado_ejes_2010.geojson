@@ -1,0 +1,7 @@
+{
+"type": "FeatureCollection",
+"features": [
+{ "type": "Feature", "properties": { "FNODE_": 1.000000, "TNODE_": 11.000000, "LPOLY_": 1.000000, "RPOLY_": 2.000000, "LENGTH": 493.137180, "E5222_": 12.000000, "E5222_ID": 12.000000, "CODIGO": 99955, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "LIM IMAGINARIO", "NOM_NOR": "LIM IMAGINARIO", "LADOI": 0, "LADOD": 0, "DESDEI": 0, "DESDED": 0, "HASTAI": 0, "HASTAD": 0, "MZAI": "", "MZAD": "", "CONTEOI": 0, "CONTEOD": 0, "LISTADOI": 0, "LISTADOD": 0, "COLECTI": 0, "COLECTD": 0, "CONSTRI": 0, "CONSTRD": 0, "OBSERI1": "", "OBSERD1": "", "TIPOCALLE": "LIM", "PREDIR": "", "NOMBRE1": "IMAGINARIO", "PROV": "", "DEPTO": "", "CODLOC": "010", "FRAC": "", "RADIO": "", "MZA": "000", "MZATXT": 0.000000, "LINK": "", "CEN91": "", "TMZA": 0.000000, "CEN99": "" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.932880, -30.088169 ], [ -63.933512, -30.090023 ], [ -63.933545, -30.092015 ], [ -63.934144, -30.091992 ] ] } }
+
+]
+}

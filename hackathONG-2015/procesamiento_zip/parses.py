@@ -26,7 +26,8 @@ REPLACES_PROY={u'VILLAS LOS LLANOS - JUAREZ CELMAN': u'Estación Juárez Celman'
                u'YOCSINA': u'Malagueño', u'VILLA STA. EUGENIA': u'Alpa Corral', 
                u'SAN IGNACIO  (LOTEO SAN JAVIER)': u'San Ignacio', 
                u'COUNTRY SAN ISIDRO - COUNTRY CHACRAS DE LA VILLA': u'Villa San Isidro', 
-               u'BROWN - GUIÑAZU NORTE - 1 DE AGOSTO': u'Estación Juárez Celman'}
+               u'BROWN - GUIÑAZU NORTE - 1 DE AGOSTO': u'Estación Juárez Celman',
+               u'SANTA MAGDALENA': u'Jovita'}
 
 # reemplazos de municipios que cambian de nombre entre la denominacion que se les 
 # dio en el 2008 y en 2010. Necesito que estos dos sean el mismo

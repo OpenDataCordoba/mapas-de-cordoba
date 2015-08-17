@@ -40,11 +40,12 @@ class LeviMuni():
                 # print "IGNORE %s for PDF" % city
                 continue
             """
-             
+            
             res = self.find(city)
                 
             if not res:
-                print "NO %s (%s)" % (city, projection)
+                # print "NO %s (%s)" % (city, projection)
+                pass
             else:
                 projection = projection if type(projection) == unicode else unicode(projection.decode('utf-8'))
                 self.projections[res['m']['id']] = projection
@@ -58,9 +59,10 @@ class LeviMuni():
             
         self.fix_type = None # shit
         max_levi = 0.0
-        final = None
+        
         final_muni = None # objeto de la iteracion en municipedia finalmente usado
-
+        muni_orig = municipio # para replaces viejos
+        
         municipio = municipio.upper().strip()
 
         if para=='Proyeccion' and municipio in IGNORES_PROY:
@@ -77,36 +79,50 @@ class LeviMuni():
             return None
                 
         if para=='Mapa' and REPLACES.get(municipio, False): 
+            print "Replacing %s for %s" % (municipio, REPLACES[municipio])
             municipio = REPLACES[municipio]
             
+        if para=='Mapa' and REPLACES.get(muni_orig, False): 
+            print "Replacing %s for %s" % (muni_orig, REPLACES[muni_orig])
+            municipio = REPLACES[muni_orig]
+        else:
+            print "NOT replaces for %s" % municipio
+
         if para=='Proyeccion' and REPLACES_PROY.get(municipio, False): 
             municipio = REPLACES_PROY[municipio]
 
         if para=='Mapa' and EXTRA_MAPS.get(municipio, False): 
-            # nice_tipo = '%s %s' % (nice_tipo, EXTRA_MAPS[municipio]['tipomapa'])
             municipio = EXTRA_MAPS[municipio]['nombre']
-            print "ADDING %s for %s" % (municipio, extra_maps[municipio])
-            self.fix_type = '%s %s' % (nice_tipo, extra_maps[municipio]['tipomapa'])
-            
+            print "ADDING %s for %s" % (municipio, EXTRA_MAPS[municipio])
+            self.fix_type = EXTRA_MAPS[municipio]['tipomapa']
+
+        if para=='Mapa' and EXTRA_MAPS.get(muni_orig, False): 
+            municipio = EXTRA_MAPS[muni_orig]['nombre']
+            print "ADDING %s for %s" % (municipio, EXTRA_MAPS[muni_orig])
+            self.fix_type = EXTRA_MAPS[muni_orig]['tipomapa']
+
+        final = None
+        municipio = municipio.upper().strip()
         for m in self.munis: # munis es mi base oficial de Municipedia
             muni = m['municipio'] if type(m['municipio']) == unicode else unicode(m['municipio'].decode('utf8'))
             muni = muni.upper().strip()
-            
+
             lev_res = levi.ratio(municipio, muni)
+                
             if lev_res > max_levi:
+                # print "CHECK %.2f %s -- %s" % (lev_res, municipio, muni)
                 max_levi = lev_res
-                final_muni = m
-                final = {'original': municipio, 
-                         'm': m, 
-                         'levi': lev_res}
+                final = {'original': municipio, 'm': m, 'levi': lev_res}
                          
         if final: # contabilizar y detallar el uso en el caso de las proyecciones
+            final_muni = final['m']
             if para=='Proyeccion':
+                # print "SELECTED %.2f %s -- %s" % (max_levi, municipio, final_muni['municipio'])
                 fld = 'usado_%s' % para
                 # marcar como usado al municipio
                 
                 if final_muni.get(fld, None):
-                    print "DUPLICADO PROY %s" % str(final_muni[fld])
+                    print "DUPLICADO %s => PROYs %s" % (municipio, str(final_muni[fld]))
                     final_muni[fld].append(municipio)
                     return None 
                 else:

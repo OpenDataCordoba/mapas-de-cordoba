@@ -1,0 +1,7 @@
+{
+"type": "FeatureCollection",
+"features": [
+{ "type": "Feature", "properties": { "LENGTH": 1815.073100, "ANCHO": 20.000000, "ANCHOMED": 10.000000, "CODIGO": 99930.000000, "NOMBRE": "FCGSM", "NOM_NOR": "FCGSM" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.531041, -34.451996 ], [ -63.531336, -34.452225 ], [ -63.534973, -34.455053 ], [ -63.541732, -34.460306 ], [ -63.545446, -34.463192 ] ] } }
+
+]
+}

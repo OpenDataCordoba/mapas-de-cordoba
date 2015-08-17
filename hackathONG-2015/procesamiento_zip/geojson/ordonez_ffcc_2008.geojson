@@ -1,0 +1,15 @@
+{
+"type": "FeatureCollection",
+"features": [
+{ "type": "Feature", "properties": { "FNODE_": 1.000000, "TNODE_": 2.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 183.806960, "N0723_": 1.000000, "N0723_ID": 1.000000, "CODIGO": 99915.000000, "ANCHO": 0.000000, "ANCHOMED": 0.000000, "NOMBRE": "FCGBM", "NOM_NOR": "FCGBM" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.875706, -32.840200 ], [ -62.873953, -32.840946 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 2.000000, "TNODE_": 3.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 253.576420, "N0723_": 2.000000, "N0723_ID": 2.000000, "CODIGO": 99915.000000, "ANCHO": 0.000000, "ANCHOMED": 0.000000, "NOMBRE": "FCGBM", "NOM_NOR": "FCGBM" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.873953, -32.840946 ], [ -62.871538, -32.841981 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 3.000000, "TNODE_": 4.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 1026.377120, "N0723_": 3.000000, "N0723_ID": 3.000000, "CODIGO": 99915.000000, "ANCHO": 0.000000, "ANCHOMED": 0.000000, "NOMBRE": "FCGBM", "NOM_NOR": "FCGBM" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.871538, -32.841981 ], [ -62.861758, -32.846163 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 4.000000, "TNODE_": 5.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 257.157540, "N0723_": 4.000000, "N0723_ID": 4.000000, "CODIGO": 99915.000000, "ANCHO": 0.000000, "ANCHOMED": 0.000000, "NOMBRE": "FCGBM", "NOM_NOR": "FCGBM" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.861758, -32.846163 ], [ -62.859311, -32.847215 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 5.000000, "TNODE_": 6.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 161.446590, "N0723_": 5.000000, "N0723_ID": 5.000000, "CODIGO": 99915.000000, "ANCHO": 0.000000, "ANCHOMED": 0.000000, "NOMBRE": "FCGBM", "NOM_NOR": "FCGBM" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.859311, -32.847215 ], [ -62.857771, -32.847872 ] ] } }
+
+]
+}

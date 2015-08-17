@@ -47,6 +47,7 @@ myLevi = LeviMuni(munis=munis)
 myLevi.load()
 projections = myLevi.projections
 
+
 munis_missing = list(munis) # copia para saber cuales no se usan
 final_munis = {} # relacion final desde el lado de los nombres de los archivos (localidad + tipo + anio)
 final_municipedia = {} # uso de los IDs de municipedia
@@ -102,15 +103,17 @@ for filename in archives:
     # las de 2010 y 2008 pueden diferir ... (por ejemplo Monte Maiz esta con y sin acento)
 
     res = myLevi.find(localidad, para="Mapa")
+    locu = localidad if type(localidad) == unicode else unicode(localidad.decode('utf-8'))
     if not res:
-        print "LEVI ERROR %s. Exiting" % localidad
+        print "LEVI ERROR %s. Exiting" % locu
         exit(1)
-
+    
     m = res['m']
     final_id_minicipedia = m['id']
     municipio = m['municipio']
     lev_res = res['levi']
-    
+    print "Usando %d %s (%.2f) para %s" % (final_id_minicipedia, municipio, lev_res, locu)
+
     if myLevi.fix_type: 
         nice_tipo = myLevi.fix_type
     
@@ -124,11 +127,10 @@ for filename in archives:
     # ver si tengo su proyeccion
     projection = projections.get(final_id_minicipedia, None)
     if not projection:
-        print "No tenemos la proyeccion para %s %s" % (localidad, municipio)
-        exit(1)
+        print "No tenemos la proyeccion (o es PDF) para (%d) %s %s" % (final_id_minicipedia, locu, municipio)
     
     if final_munis.get(localidad, False) == False:
-        locu = localidad if type(localidad) == unicode else unicode(localidad.decode('utf-8'))
+        
         print '%s for %s is %.2f' % (municipio, locu, lev_res)
         geoJsonFile = fname + '.geojson' if not myOGR.lastError else myOGR.lastError
         geoKMLFile = fname + '.kml' if not myOGR.lastError else myOGR.lastError
@@ -202,8 +204,8 @@ for filename in archives:
     if projection == u"PDF":
         print "NO TENGO PROYECCION (PDF) para %s" % municipio
         unknown_projection.append(municipio)
-        # continue
-        projection_origin = 'EPSG:22194'
+        # uso la mas usada (150 usos contra 83 de la 22194). Es mejor que nada
+        projection_origin = 'EPSG:22174'
         
     elif projection == u"Gauss Kruger Zona 4 (Campo Inchauspe), -63\u00ba":
         projection_origin = 'EPSG:22194'

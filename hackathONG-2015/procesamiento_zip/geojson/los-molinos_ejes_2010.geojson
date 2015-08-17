@@ -1,0 +1,7 @@
+{
+"type": "FeatureCollection",
+"features": [
+{ "type": "Feature", "properties": { "FNODE_": 4.000000, "TNODE_": 9.000000, "LPOLY_": 1.000000, "RPOLY_": 4.000000, "LENGTH": 75.566810, "E2399_": 9.000000, "E2399_ID": 9.000000, "CODIGO": 99970, "ANCHO": 7, "ANCHOMED": 3.500000, "NOMBRE": "CANAL SN", "NOM_NOR": "CANAL SN", "LADOI": 0, "LADOD": 0, "DESDEI": 0, "DESDED": 0, "HASTAI": 0, "HASTAD": 0, "MZAI": "", "MZAD": "", "CONTEOI": 0, "CONTEOD": 0, "LISTADOI": 0, "LISTADOD": 0, "COLECTI": 0, "COLECTD": 0, "CONSTRI": 0, "CONSTRD": 0, "OBSERI": "", "OBSERD": "" }, "geometry": { "type": "LineString", "coordinates": [ [ -64.373736, -31.851887 ], [ -64.373889, -31.852556 ] ] } }
+
+]
+}

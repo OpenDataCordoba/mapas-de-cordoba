@@ -1,0 +1,19 @@
+{
+"type": "FeatureCollection",
+"features": [
+{ "type": "Feature", "properties": { "FNODE_": 3.000000, "TNODE_": 1.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 249.425990, "N2356_": 1.000000, "N2356_ID": 1.000000, "CODIGO": 99945, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "ARROYO", "NOM_NOR": "ARROYO" }, "geometry": { "type": "LineString", "coordinates": [ [ -65.284768, -31.037502 ], [ -65.284515, -31.036679 ], [ -65.284370, -31.036218 ], [ -65.283950, -31.035373 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 3.000000, "TNODE_": 4.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 53.370120, "N2356_": 2.000000, "N2356_ID": 4.000000, "CODIGO": 99945, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "ARROYO", "NOM_NOR": "ARROYO" }, "geometry": { "type": "LineString", "coordinates": [ [ -65.284768, -31.037502 ], [ -65.284849, -31.037978 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 4.000000, "TNODE_": 5.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 35.552260, "N2356_": 3.000000, "N2356_ID": 3.000000, "CODIGO": 99945, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "ARROYO", "NOM_NOR": "ARROYO" }, "geometry": { "type": "LineString", "coordinates": [ [ -65.284849, -31.037978 ], [ -65.284987, -31.038276 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 5.000000, "TNODE_": 2.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 705.963110, "N2356_": 4.000000, "N2356_ID": 6.000000, "CODIGO": 99945, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "ARROYO CIENAGA DEL CORO", "NOM_NOR": "ARROYO CIENAGA DEL CORO" }, "geometry": { "type": "LineString", "coordinates": [ [ -65.284987, -31.038276 ], [ -65.285209, -31.038098 ], [ -65.285500, -31.037894 ], [ -65.285871, -31.037821 ], [ -65.286506, -31.037782 ], [ -65.287167, -31.037164 ], [ -65.287785, -31.036871 ], [ -65.289979, -31.036577 ], [ -65.291739, -31.036283 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 5.000000, "TNODE_": 6.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 141.404120, "N2356_": 5.000000, "N2356_ID": 2.000000, "CODIGO": 99945, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "ARROYO", "NOM_NOR": "ARROYO" }, "geometry": { "type": "LineString", "coordinates": [ [ -65.284987, -31.038276 ], [ -65.285534, -31.039460 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 7.000000, "TNODE_": 5.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 1088.058890, "N2356_": 6.000000, "N2356_ID": 7.000000, "CODIGO": 99945, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "ARROYO CIENAGA DEL CORO", "NOM_NOR": "ARROYO CIENAGA DEL CORO" }, "geometry": { "type": "LineString", "coordinates": [ [ -65.281483, -31.045539 ], [ -65.281352, -31.044711 ], [ -65.280834, -31.042694 ], [ -65.280933, -31.041245 ], [ -65.280922, -31.040782 ], [ -65.280977, -31.039861 ], [ -65.281269, -31.039306 ], [ -65.282289, -31.038906 ], [ -65.282741, -31.038741 ], [ -65.283493, -31.038653 ], [ -65.284167, -31.038699 ], [ -65.284675, -31.038525 ], [ -65.284987, -31.038276 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 8.000000, "TNODE_": 7.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 85.419550, "N2356_": 7.000000, "N2356_ID": 5.000000, "CODIGO": 99945, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "ARROYO CIENAGA DEL CORO", "NOM_NOR": "ARROYO CIENAGA DEL CORO" }, "geometry": { "type": "LineString", "coordinates": [ [ -65.281592, -31.046303 ], [ -65.281590, -31.046212 ], [ -65.281483, -31.045539 ] ] } }
+
+]
+}

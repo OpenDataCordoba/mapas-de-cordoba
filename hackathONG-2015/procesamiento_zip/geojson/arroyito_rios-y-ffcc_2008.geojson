@@ -1,0 +1,113 @@
+{
+"type": "FeatureCollection",
+"features": [
+{ "type": "Feature", "properties": { "FNODE_": 1.000000, "TNODE_": 2.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 48.674940, "N0165_": 1.000000, "N0165_ID": 1.000000, "CODIGO": 99946, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO SEGUNDO", "NOM_NOR": "RIO SEGUNDO" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.067970, -31.415446 ], [ -63.068253, -31.415811 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 3.000000, "TNODE_": 1.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 293.271630, "N0165_": 2.000000, "N0165_ID": 2.000000, "CODIGO": 99946, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO SEGUNDO", "NOM_NOR": "RIO SEGUNDO" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.066676, -31.413045 ], [ -63.067970, -31.415446 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 4.000000, "TNODE_": 3.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 63.413330, "N0165_": 3.000000, "N0165_ID": 3.000000, "CODIGO": 99946, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO SEGUNDO", "NOM_NOR": "RIO SEGUNDO" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.066478, -31.412499 ], [ -63.066676, -31.413045 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 5.000000, "TNODE_": 4.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 35.923530, "N0165_": 4.000000, "N0165_ID": 4.000000, "CODIGO": 99946, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO SEGUNDO", "NOM_NOR": "RIO SEGUNDO" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.066263, -31.412232 ], [ -63.066478, -31.412499 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 6.000000, "TNODE_": 5.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 30.870700, "N0165_": 5.000000, "N0165_ID": 5.000000, "CODIGO": 99946, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO SEGUNDO", "NOM_NOR": "RIO SEGUNDO" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.065969, -31.412115 ], [ -63.066263, -31.412232 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 7.000000, "TNODE_": 6.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 56.678920, "N0165_": 6.000000, "N0165_ID": 6.000000, "CODIGO": 99946, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO SEGUNDO", "NOM_NOR": "RIO SEGUNDO" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.065575, -31.411731 ], [ -63.065969, -31.412115 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 8.000000, "TNODE_": 9.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 29.364090, "N0165_": 7.000000, "N0165_ID": 7.000000, "CODIGO": 99946, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO SEGUNDO", "NOM_NOR": "RIO SEGUNDO" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.064284, -31.410800 ], [ -63.064493, -31.410994 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 10.000000, "TNODE_": 8.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 30.549140, "N0165_": 8.000000, "N0165_ID": 8.000000, "CODIGO": 99946, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO SEGUNDO", "NOM_NOR": "RIO SEGUNDO" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.063984, -31.410700 ], [ -63.064284, -31.410800 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 11.000000, "TNODE_": 10.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 185.565350, "N0165_": 9.000000, "N0165_ID": 9.000000, "CODIGO": 99946, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO SEGUNDO", "NOM_NOR": "RIO SEGUNDO" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.062530, -31.409584 ], [ -63.063984, -31.410700 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 12.000000, "TNODE_": 11.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 67.832510, "N0165_": 10.000000, "N0165_ID": 10.000000, "CODIGO": 99946, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO SEGUNDO", "NOM_NOR": "RIO SEGUNDO" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.062121, -31.409083 ], [ -63.062530, -31.409584 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 13.000000, "TNODE_": 12.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 73.859660, "N0165_": 11.000000, "N0165_ID": 11.000000, "CODIGO": 99946, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO SEGUNDO", "NOM_NOR": "RIO SEGUNDO" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.061391, -31.408856 ], [ -63.062121, -31.409083 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 14.000000, "TNODE_": 15.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 21.828880, "N0165_": 12.000000, "N0165_ID": 12.000000, "CODIGO": 99946, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO SEGUNDO", "NOM_NOR": "RIO SEGUNDO" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.060125, -31.408002 ], [ -63.060204, -31.408187 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 16.000000, "TNODE_": 14.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 74.607310, "N0165_": 13.000000, "N0165_ID": 13.000000, "CODIGO": 99946, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO SEGUNDO", "NOM_NOR": "RIO SEGUNDO" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.059474, -31.407627 ], [ -63.060125, -31.408002 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 17.000000, "TNODE_": 16.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 46.113990, "N0165_": 14.000000, "N0165_ID": 14.000000, "CODIGO": 99946, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO SEGUNDO", "NOM_NOR": "RIO SEGUNDO" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.058996, -31.407558 ], [ -63.059474, -31.407627 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 18.000000, "TNODE_": 19.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 70.471630, "N0165_": 15.000000, "N0165_ID": 15.000000, "CODIGO": 99946, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO SEGUNDO", "NOM_NOR": "RIO SEGUNDO" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.057812, -31.407859 ], [ -63.057139, -31.408124 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 20.000000, "TNODE_": 21.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 48.900410, "N0165_": 16.000000, "N0165_ID": 16.000000, "CODIGO": 99946, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO SEGUNDO", "NOM_NOR": "RIO SEGUNDO" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.055828, -31.408965 ], [ -63.055517, -31.409316 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 22.000000, "TNODE_": 23.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 79.248030, "N0165_": 17.000000, "N0165_ID": 17.000000, "CODIGO": 99946, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO SEGUNDO", "NOM_NOR": "RIO SEGUNDO" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.055133, -31.409388 ], [ -63.054370, -31.409675 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 23.000000, "TNODE_": 24.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 126.819750, "N0165_": 18.000000, "N0165_ID": 18.000000, "CODIGO": 99946, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO SEGUNDO", "NOM_NOR": "RIO SEGUNDO" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.054370, -31.409675 ], [ -63.053039, -31.409754 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 25.000000, "TNODE_": 24.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 79.411900, "N0165_": 19.000000, "N0165_ID": 19.000000, "CODIGO": 99946, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO SEGUNDO", "NOM_NOR": "RIO SEGUNDO" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.052283, -31.409451 ], [ -63.053039, -31.409754 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 26.000000, "TNODE_": 25.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 55.760650, "N0165_": 20.000000, "N0165_ID": 20.000000, "CODIGO": 99946, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO SEGUNDO", "NOM_NOR": "RIO SEGUNDO" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.051831, -31.409130 ], [ -63.052283, -31.409451 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 27.000000, "TNODE_": 26.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 135.655810, "N0165_": 21.000000, "N0165_ID": 21.000000, "CODIGO": 99946, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO SEGUNDO", "NOM_NOR": "RIO SEGUNDO" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.051103, -31.408078 ], [ -63.051831, -31.409130 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 28.000000, "TNODE_": 29.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 80.506210, "N0165_": 22.000000, "N0165_ID": 22.000000, "CODIGO": 99946, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO SEGUNDO", "NOM_NOR": "RIO SEGUNDO" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.050575, -31.406747 ], [ -63.050941, -31.407401 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 30.000000, "TNODE_": 31.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 50.916600, "N0165_": 23.000000, "N0165_ID": 23.000000, "CODIGO": 99946, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO SEGUNDO", "NOM_NOR": "RIO SEGUNDO" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.050367, -31.405705 ], [ -63.050529, -31.406142 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 32.000000, "TNODE_": 30.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 132.574510, "N0165_": 24.000000, "N0165_ID": 24.000000, "CODIGO": 99946, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO SEGUNDO", "NOM_NOR": "RIO SEGUNDO" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.049591, -31.404711 ], [ -63.050367, -31.405705 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 33.000000, "TNODE_": 32.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 99.809820, "N0165_": 25.000000, "N0165_ID": 25.000000, "CODIGO": 99946, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO SEGUNDO", "NOM_NOR": "RIO SEGUNDO" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.048635, -31.404340 ], [ -63.049591, -31.404711 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 33.000000, "TNODE_": 34.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 109.107740, "N0165_": 26.000000, "N0165_ID": 26.000000, "CODIGO": 99946, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO SEGUNDO", "NOM_NOR": "RIO SEGUNDO" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.048635, -31.404340 ], [ -63.047494, -31.404442 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 34.000000, "TNODE_": 35.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 163.016870, "N0165_": 27.000000, "N0165_ID": 27.000000, "CODIGO": 99946, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO SEGUNDO", "NOM_NOR": "RIO SEGUNDO" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.047494, -31.404442 ], [ -63.045952, -31.405084 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 35.000000, "TNODE_": 36.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 57.030690, "N0165_": 28.000000, "N0165_ID": 28.000000, "CODIGO": 99946, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO SEGUNDO", "NOM_NOR": "RIO SEGUNDO" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.045952, -31.405084 ], [ -63.045410, -31.405304 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 36.000000, "TNODE_": 37.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 43.304160, "N0165_": 29.000000, "N0165_ID": 29.000000, "CODIGO": 99946, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO SEGUNDO", "NOM_NOR": "RIO SEGUNDO" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.045410, -31.405304 ], [ -63.045141, -31.405619 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 38.000000, "TNODE_": 39.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 26.201150, "N0165_": 30.000000, "N0165_ID": 30.000000, "CODIGO": 99946, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO SEGUNDO", "NOM_NOR": "RIO SEGUNDO" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.068264, -31.415820 ], [ -63.068469, -31.415978 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 9.000000, "TNODE_": 7.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 131.344010, "N0165_": 31.000000, "N0165_ID": 31.000000, "CODIGO": 99946, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO SEGUNDO", "NOM_NOR": "RIO SEGUNDO" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.064493, -31.410994 ], [ -63.065575, -31.411731 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 15.000000, "TNODE_": 13.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 135.074050, "N0165_": 32.000000, "N0165_ID": 32.000000, "CODIGO": 99946, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO SEGUNDO", "NOM_NOR": "RIO SEGUNDO" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.060204, -31.408187 ], [ -63.061391, -31.408856 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 17.000000, "TNODE_": 18.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 117.381860, "N0165_": 33.000000, "N0165_ID": 33.000000, "CODIGO": 99946, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO SEGUNDO", "NOM_NOR": "RIO SEGUNDO" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.058996, -31.407558 ], [ -63.057812, -31.407859 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 19.000000, "TNODE_": 20.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 155.700030, "N0165_": 34.000000, "N0165_ID": 34.000000, "CODIGO": 99946, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO SEGUNDO", "NOM_NOR": "RIO SEGUNDO" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.057139, -31.408124 ], [ -63.055828, -31.408965 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 21.000000, "TNODE_": 22.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 37.366430, "N0165_": 35.000000, "N0165_ID": 35.000000, "CODIGO": 99946, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO SEGUNDO", "NOM_NOR": "RIO SEGUNDO" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.055517, -31.409316 ], [ -63.055133, -31.409388 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 29.000000, "TNODE_": 27.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 76.584920, "N0165_": 36.000000, "N0165_ID": 36.000000, "CODIGO": 99946, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO SEGUNDO", "NOM_NOR": "RIO SEGUNDO" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.050941, -31.407401 ], [ -63.051103, -31.408078 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 31.000000, "TNODE_": 28.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 67.150950, "N0165_": 37.000000, "N0165_ID": 37.000000, "CODIGO": 99946, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO SEGUNDO", "NOM_NOR": "RIO SEGUNDO" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.050529, -31.406142 ], [ -63.050575, -31.406747 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 40.000000, "TNODE_": 41.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 124.580300, "N0165_": 38.000000, "N0165_ID": 38.000000, "CODIGO": 99946, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO SEGUNDO", "NOM_NOR": "RIO SEGUNDO" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.045088, -31.405655 ], [ -63.044083, -31.406375 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 42.000000, "TNODE_": 43.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 47.940070, "N0165_": 39.000000, "N0165_ID": 39.000000, "CODIGO": 99920, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "FCGB", "NOM_NOR": "FCGB" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.063076, -31.430234 ], [ -63.063559, -31.430356 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 44.000000, "TNODE_": 42.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 503.529790, "N0165_": 40.000000, "N0165_ID": 40.000000, "CODIGO": 99920, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "FCGB", "NOM_NOR": "FCGB" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.058004, -31.428927 ], [ -63.063076, -31.430234 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 45.000000, "TNODE_": 44.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 215.463450, "N0165_": 41.000000, "N0165_ID": 41.000000, "CODIGO": 99920, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "FCGB", "NOM_NOR": "FCGB" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.055833, -31.428369 ], [ -63.058004, -31.428927 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 46.000000, "TNODE_": 45.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 214.026280, "N0165_": 42.000000, "N0165_ID": 42.000000, "CODIGO": 99920, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "FCGB", "NOM_NOR": "FCGB" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.053678, -31.427811 ], [ -63.055833, -31.428369 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 47.000000, "TNODE_": 46.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 133.521530, "N0165_": 43.000000, "N0165_ID": 43.000000, "CODIGO": 99920, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "FCGB", "NOM_NOR": "FCGB" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.052332, -31.427466 ], [ -63.053678, -31.427811 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 48.000000, "TNODE_": 47.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 346.446240, "N0165_": 44.000000, "N0165_ID": 44.000000, "CODIGO": 99920, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "FCGB", "NOM_NOR": "FCGB" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.048843, -31.426567 ], [ -63.052332, -31.427466 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 49.000000, "TNODE_": 48.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 176.383810, "N0165_": 45.000000, "N0165_ID": 45.000000, "CODIGO": 99920, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "FCGB", "NOM_NOR": "FCGB" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.047066, -31.426109 ], [ -63.048843, -31.426567 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 50.000000, "TNODE_": 49.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 62.641840, "N0165_": 46.000000, "N0165_ID": 46.000000, "CODIGO": 99920, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "FCGB", "NOM_NOR": "FCGB" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.046436, -31.425945 ], [ -63.047066, -31.426109 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 51.000000, "TNODE_": 50.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 305.164300, "N0165_": 47.000000, "N0165_ID": 47.000000, "CODIGO": 99920, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "FCGB", "NOM_NOR": "FCGB" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.043361, -31.425156 ], [ -63.046436, -31.425945 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 52.000000, "TNODE_": 51.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 228.106330, "N0165_": 48.000000, "N0165_ID": 48.000000, "CODIGO": 99920, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "FCGB", "NOM_NOR": "FCGB" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.041064, -31.424561 ], [ -63.043361, -31.425156 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 53.000000, "TNODE_": 52.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 159.622210, "N0165_": 49.000000, "N0165_ID": 49.000000, "CODIGO": 99920, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "FCGB", "NOM_NOR": "FCGB" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.039456, -31.424148 ], [ -63.041064, -31.424561 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 54.000000, "TNODE_": 53.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 42.720020, "N0165_": 50.000000, "N0165_ID": 50.000000, "CODIGO": 99920, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "FCGB", "NOM_NOR": "FCGB" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.039025, -31.424039 ], [ -63.039456, -31.424148 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 55.000000, "TNODE_": 54.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 29.261750, "N0165_": 51.000000, "N0165_ID": 51.000000, "CODIGO": 99920, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "FCGB", "NOM_NOR": "FCGB" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.038731, -31.423962 ], [ -63.039025, -31.424039 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 39.000000, "TNODE_": 56.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 45.961940, "N0165_": 52.000000, "N0165_ID": 52.000000, "CODIGO": 99946, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO SEGUNDO", "NOM_NOR": "RIO SEGUNDO" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.068469, -31.415978 ], [ -63.068715, -31.416335 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 57.000000, "TNODE_": 58.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 3149.077330, "N0165_": 53.000000, "N0165_ID": 53.000000, "CODIGO": 99946, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO SEGUNDO", "NOM_NOR": "RIO SEGUNDO" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.044970, -31.404690 ], [ -63.045454, -31.404574 ], [ -63.046938, -31.404035 ], [ -63.047390, -31.403928 ], [ -63.048168, -31.403789 ], [ -63.049298, -31.404034 ], [ -63.049776, -31.404315 ], [ -63.050406, -31.404821 ], [ -63.050955, -31.405850 ], [ -63.051154, -31.406608 ], [ -63.051483, -31.407528 ], [ -63.051960, -31.408106 ], [ -63.052511, -31.408378 ], [ -63.053573, -31.408632 ], [ -63.054346, -31.408714 ], [ -63.055429, -31.408432 ], [ -63.056161, -31.407874 ], [ -63.057056, -31.407492 ], [ -63.058187, -31.407169 ], [ -63.058892, -31.406986 ], [ -63.059286, -31.407054 ], [ -63.059780, -31.407285 ], [ -63.060520, -31.407737 ], [ -63.061665, -31.408234 ], [ -63.063161, -31.409369 ], [ -63.064054, -31.409943 ], [ -63.065702, -31.411194 ], [ -63.066668, -31.411922 ], [ -63.067119, -31.412658 ], [ -63.067559, -31.413420 ], [ -63.067873, -31.414287 ], [ -63.068412, -31.415234 ], [ -63.069231, -31.416201 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 56.000000, "TNODE_": 59.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 35.700140, "N0165_": 54.000000, "N0165_ID": 54.000000, "CODIGO": 99946, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO SEGUNDO", "NOM_NOR": "RIO SEGUNDO" }, "geometry": { "type": "LineString", "coordinates": [ [ -63.068715, -31.416335 ], [ -63.069014, -31.416529 ] ] } }
+
+]
+}

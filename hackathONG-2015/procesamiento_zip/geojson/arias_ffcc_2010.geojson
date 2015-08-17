@@ -1,0 +1,7 @@
+{
+"type": "FeatureCollection",
+"features": [
+{ "type": "Feature", "properties": { "FNODE_": 2.000000, "TNODE_": 1.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 4796.976920, "N0346_": 1.000000, "N0346_ID": 1.000000, "CODIGO": 99915, "ANCHO": 20, "ANCHOMED": 10.000000, "NOMBRE": "FC<>", "NOM_NOR": "FC<>" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.369513, -33.650166 ], [ -62.402097, -33.644995 ], [ -62.409144, -33.643863 ], [ -62.420279, -33.641950 ] ] } }
+
+]
+}

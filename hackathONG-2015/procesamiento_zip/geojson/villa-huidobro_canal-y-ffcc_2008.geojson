@@ -1,0 +1,17 @@
+{
+"type": "FeatureCollection",
+"features": [
+{ "type": "Feature", "properties": { "FNODE_": 1.000000, "TNODE_": 2.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 625.217760, "N0427_": 1.000000, "N0427_ID": 1.000000, "CODIGO": 99930, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "FCGSM", "NOM_NOR": "FCGSM" }, "geometry": { "type": "LineString", "coordinates": [ [ -64.569339, -34.834825 ], [ -64.576172, -34.834885 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 2.000000, "TNODE_": 3.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 540.176270, "N0427_": 2.000000, "N0427_ID": 2.000000, "CODIGO": 99930, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "FCGSM", "NOM_NOR": "FCGSM" }, "geometry": { "type": "LineString", "coordinates": [ [ -64.576172, -34.834885 ], [ -64.582075, -34.834937 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 3.000000, "TNODE_": 4.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 809.783620, "N0427_": 3.000000, "N0427_ID": 3.000000, "CODIGO": 99930, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "FCGSM", "NOM_NOR": "FCGSM" }, "geometry": { "type": "LineString", "coordinates": [ [ -64.582075, -34.834937 ], [ -64.590925, -34.835014 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 4.000000, "TNODE_": 5.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 221.088330, "N0427_": 4.000000, "N0427_ID": 4.000000, "CODIGO": 99930, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "FCGSM", "NOM_NOR": "FCGSM" }, "geometry": { "type": "LineString", "coordinates": [ [ -64.590925, -34.835014 ], [ -64.593341, -34.835035 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 6.000000, "TNODE_": 7.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 55.536020, "N0427_": 5.000000, "N0427_ID": 5.000000, "CODIGO": 99970, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "CANAL", "NOM_NOR": "CANAL" }, "geometry": { "type": "LineString", "coordinates": [ [ -64.585885, -34.845502 ], [ -64.585873, -34.846002 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 8.000000, "TNODE_": 7.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 60.008330, "N0427_": 6.000000, "N0427_ID": 6.000000, "CODIGO": 99970, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "CANAL", "NOM_NOR": "CANAL" }, "geometry": { "type": "LineString", "coordinates": [ [ -64.585217, -34.846002 ], [ -64.585873, -34.846002 ] ] } }
+
+]
+}

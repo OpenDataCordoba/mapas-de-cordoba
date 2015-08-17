@@ -1,0 +1,63 @@
+{
+"type": "FeatureCollection",
+"features": [
+{ "type": "Feature", "properties": { "FNODE_": 1.000000, "TNODE_": 2.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 94.744390, "N0672_": 1.000000, "N0672_ID": 1.000000, "CODIGO": 99940, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "SIN DATO", "NOM_NOR": "SIN DATO" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.439680, -33.451798 ], [ -62.439895, -33.452633 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 3.000000, "TNODE_": 2.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 120.726450, "N0672_": 2.000000, "N0672_ID": 2.000000, "CODIGO": 99940, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO COLORADO", "NOM_NOR": "RIO COLORADO" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.441166, -33.452409 ], [ -62.440008, -33.452611 ], [ -62.439895, -33.452633 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 4.000000, "TNODE_": 5.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 94.637470, "N0672_": 3.000000, "N0672_ID": 3.000000, "CODIGO": 99940, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "SIN DATO", "NOM_NOR": "SIN DATO" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.438356, -33.452031 ], [ -62.438566, -33.452866 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 2.000000, "TNODE_": 5.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 126.314870, "N0672_": 4.000000, "N0672_ID": 4.000000, "CODIGO": 99940, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO COLORADO", "NOM_NOR": "RIO COLORADO" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.439895, -33.452633 ], [ -62.439782, -33.452655 ], [ -62.438673, -33.452849 ], [ -62.438566, -33.452866 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 5.000000, "TNODE_": 6.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 127.793420, "N0672_": 5.000000, "N0672_ID": 5.000000, "CODIGO": 99940, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO COLORADO", "NOM_NOR": "RIO COLORADO" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.438566, -33.452866 ], [ -62.438442, -33.452884 ], [ -62.437338, -33.453081 ], [ -62.437220, -33.453099 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 2.000000, "TNODE_": 7.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 125.822300, "N0672_": 6.000000, "N0672_ID": 6.000000, "CODIGO": 99940, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "SIN DATO", "NOM_NOR": "SIN DATO" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.439895, -33.452633 ], [ -62.440173, -33.453743 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 8.000000, "TNODE_": 7.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 121.006870, "N0672_": 7.000000, "N0672_ID": 7.000000, "CODIGO": 99940, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO PRIMERO", "NOM_NOR": "RIO PRIMERO" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.441449, -33.453528 ], [ -62.440297, -33.453721 ], [ -62.440173, -33.453743 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 5.000000, "TNODE_": 9.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 125.822300, "N0672_": 8.000000, "N0672_ID": 8.000000, "CODIGO": 99940, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "SIN DATO", "NOM_NOR": "SIN DATO" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.438566, -33.452866 ], [ -62.438843, -33.453976 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 7.000000, "TNODE_": 9.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 126.351250, "N0672_": 9.000000, "N0672_ID": 9.000000, "CODIGO": 99940, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO PRIMERO", "NOM_NOR": "RIO PRIMERO" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.440173, -33.453743 ], [ -62.440055, -33.453761 ], [ -62.438951, -33.453950 ], [ -62.438843, -33.453976 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 10.000000, "TNODE_": 11.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 96.510610, "N0672_": 10.000000, "N0672_ID": 10.000000, "CODIGO": 99940, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "CORRIENTES", "NOM_NOR": "CORRIENTES" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.431669, -33.453222 ], [ -62.431852, -33.453958 ], [ -62.431873, -33.454075 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 11.000000, "TNODE_": 12.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 122.324020, "N0672_": 11.000000, "N0672_ID": 11.000000, "CODIGO": 99940, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO COLORADO", "NOM_NOR": "RIO COLORADO" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.431873, -33.454075 ], [ -62.431916, -33.454085 ], [ -62.433090, -33.453883 ], [ -62.433149, -33.453847 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 9.000000, "TNODE_": 13.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 127.888700, "N0672_": 12.000000, "N0672_ID": 12.000000, "CODIGO": 99940, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO PRIMERO", "NOM_NOR": "RIO PRIMERO" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.438843, -33.453976 ], [ -62.438736, -33.453998 ], [ -62.437621, -33.454192 ], [ -62.437497, -33.454214 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 14.000000, "TNODE_": 15.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 384.662000, "N0672_": 13.000000, "N0672_ID": 13.000000, "CODIGO": 99940, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO NEGRO", "NOM_NOR": "RIO NEGRO" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.430242, -33.453459 ], [ -62.430156, -33.453463 ], [ -62.426199, -33.454189 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 11.000000, "TNODE_": 16.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 135.060640, "N0672_": 14.000000, "N0672_ID": 14.000000, "CODIGO": 99940, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO COLORADO", "NOM_NOR": "RIO COLORADO" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.431873, -33.454075 ], [ -62.431776, -33.454061 ], [ -62.430543, -33.454286 ], [ -62.430452, -33.454299 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 7.000000, "TNODE_": 17.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 125.822300, "N0672_": 15.000000, "N0672_ID": 15.000000, "CODIGO": 99940, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "SIN DATO", "NOM_NOR": "SIN DATO" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.440173, -33.453743 ], [ -62.440451, -33.454854 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 16.000000, "TNODE_": 18.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 384.152400, "N0672_": 16.000000, "N0672_ID": 16.000000, "CODIGO": 99940, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO COLORADO", "NOM_NOR": "RIO COLORADO" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.430452, -33.454299 ], [ -62.430350, -33.454312 ], [ -62.426408, -33.455010 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 9.000000, "TNODE_": 19.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 126.416970, "N0672_": 17.000000, "N0672_ID": 17.000000, "CODIGO": 99940, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "SIN DATO", "NOM_NOR": "SIN DATO" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.438843, -33.453976 ], [ -62.439127, -33.455091 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 11.000000, "TNODE_": 20.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 123.825050, "N0672_": 18.000000, "N0672_ID": 18.000000, "CODIGO": 99940, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "CORRIENTES", "NOM_NOR": "CORRIENTES" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.431873, -33.454075 ], [ -62.431878, -33.454111 ], [ -62.432109, -33.455073 ], [ -62.432097, -33.455172 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 21.000000, "TNODE_": 22.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 259.125580, "N0672_": 19.000000, "N0672_ID": 19.000000, "CODIGO": 99940, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO CARCARANA", "NOM_NOR": "RIO CARCARANA" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.436706, -33.456789 ], [ -62.436550, -33.456806 ], [ -62.434090, -33.457237 ], [ -62.433977, -33.457259 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 18.000000, "TNODE_": 23.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 251.750370, "N0672_": 20.000000, "N0672_ID": 20.000000, "CODIGO": 99940, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "ECUADOR", "NOM_NOR": "ECUADOR" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.426408, -33.455010 ], [ -62.426969, -33.457231 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 24.000000, "TNODE_": 25.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 137.805120, "N0672_": 21.000000, "N0672_ID": 21.000000, "CODIGO": 99940, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "CORRIENTES", "NOM_NOR": "CORRIENTES" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.432337, -33.456273 ], [ -62.432652, -33.457487 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 22.000000, "TNODE_": 25.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 125.743570, "N0672_": 22.000000, "N0672_ID": 22.000000, "CODIGO": 99940, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO CARCARANA", "NOM_NOR": "RIO CARCARANA" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.433977, -33.457259 ], [ -62.433880, -33.457276 ], [ -62.432765, -33.457474 ], [ -62.432652, -33.457487 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 21.000000, "TNODE_": 26.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 242.702470, "N0672_": 23.000000, "N0672_ID": 23.000000, "CODIGO": 99940, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO CARCARANA", "NOM_NOR": "RIO CARCARANA" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.436706, -33.456789 ], [ -62.436873, -33.456771 ], [ -62.438004, -33.456560 ], [ -62.438277, -33.457612 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 27.000000, "TNODE_": 25.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 126.674200, "N0672_": 24.000000, "N0672_ID": 24.000000, "CODIGO": 99940, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "RIO CARCARANA", "NOM_NOR": "RIO CARCARANA" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.431317, -33.457693 ], [ -62.431430, -33.457702 ], [ -62.432582, -33.457496 ], [ -62.432652, -33.457487 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 25.000000, "TNODE_": 28.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 123.717330, "N0672_": 25.000000, "N0672_ID": 25.000000, "CODIGO": 99940, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "CORRIENTES", "NOM_NOR": "CORRIENTES" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.432652, -33.457487 ], [ -62.432657, -33.457501 ], [ -62.432946, -33.458575 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 29.000000, "TNODE_": 30.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 114.756260, "N0672_": 26.000000, "N0672_ID": 26.000000, "CODIGO": 99940, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "SAN LUIS", "NOM_NOR": "SAN LUIS" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.440156, -33.464774 ], [ -62.440419, -33.465785 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 31.000000, "TNODE_": 32.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 115.732450, "N0672_": 27.000000, "N0672_ID": 27.000000, "CODIGO": 99940, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "CALLE S N", "NOM_NOR": "CALLE S N" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.434055, -33.465847 ], [ -62.434318, -33.466867 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 33.000000, "TNODE_": 34.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 1771.849320, "N0672_": 28.000000, "N0672_ID": 28.000000, "CODIGO": 99915, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "FCGBM", "NOM_NOR": "FCGBM" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.443745, -33.457772 ], [ -62.425083, -33.461013 ] ] } }
+,
+{ "type": "Feature", "properties": { "FNODE_": 15.000000, "TNODE_": 18.000000, "LPOLY_": 0.000000, "RPOLY_": 0.000000, "LENGTH": 93.171880, "N0672_": 29.000000, "N0672_ID": 29.000000, "CODIGO": 99940, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "ECUADOR", "NOM_NOR": "ECUADOR" }, "geometry": { "type": "LineString", "coordinates": [ [ -62.426199, -33.454189 ], [ -62.426408, -33.455010 ] ] } }
+
+]
+}

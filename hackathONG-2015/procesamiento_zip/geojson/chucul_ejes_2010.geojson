@@ -1,0 +1,7 @@
+{
+"type": "FeatureCollection",
+"features": [
+{ "type": "Feature", "properties": { "FNODE_": 48.000000, "TNODE_": 51.000000, "LPOLY_": 27.000000, "RPOLY_": 1.000000, "LENGTH": 265.925740, "E2388_": 77.000000, "E2388_ID": 77.000000, "CODIGO": 99952, "ANCHO": 0, "ANCHOMED": 0.000000, "NOMBRE": "LIM LOTE", "NOM_NOR": "LIM LOTE", "LADOI": 0, "LADOD": 0, "DESDEI": 0, "DESDED": 0, "HASTAI": 0, "HASTAD": 0, "MZAI": "", "MZAD": "", "CONTEOI": 0, "CONTEOD": 0, "LISTADOI": 0, "LISTADOD": 0, "COLECTI": 0, "COLECTD": 0, "CONSTRI": 0, "CONSTRD": 0, "OBSERI": "", "OBSERD": "" }, "geometry": { "type": "LineString", "coordinates": [ [ -64.191315, -33.011450 ], [ -64.189602, -33.013364 ] ] } }
+
+]
+}
