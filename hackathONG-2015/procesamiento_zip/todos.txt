@@ -1,7 +1,7 @@
 Crear tres tablas separadas. SHP, GeoJson y KML
 
 Revisar los archivos que no se crearon
-Revisar ñla desviacion del JSON
+Revisar la desviacion del JSON
 https://github.com/OpenDataCordoba/mapas-de-cordoba/blob/master/hackathONG-2015/procesamiento_zip/geojson/mendiolaza_ejes_2010.geojson
 Posiblemete la proxeccion no sea la correcta
 
@@ -18,7 +18,7 @@ http://hojaprovincial.cba.gov.ar/cordoba/ischilin/los-pozos/general/datos-genera
 
 Probar que las proyecciones esperadas sean las correctas
 
-ogr2ogr -f GeoJSON -t_srs EPSG:4326 -s_srs EPSG:22194 -skipfailures mendio94.geojson /home/saul/dev/mapas-de-cordoba/hackathONG-2015/procesamiento_zip/tmp/Colon_Mendiolaza_Ejes_2010/mendiolaza_ejes_2010.shp
+ogr2ogr -f GeoJSON -t_srs EPSG:4326 -s_srs EPSG:22174 -skipfailures mendio94.geojson /home/saul/dev/mapas-de-cordoba/hackathONG-2015/procesamiento_zip/tmp/Colon_Mendiolaza_Ejes_2010/mendiolaza_ejes_2010.shp
 
 ogr2ogr -f GeoJSON -t_srs EPSG:4326 -s_srs EPSG:22195 -skipfailures mendio95.geojson /home/saul/dev/mapas-de-cordoba/hackathONG-2015/procesamiento_zip/tmp/Colon_Mendiolaza_Ejes_2010/mendiolaza_ejes_2010.shp
 

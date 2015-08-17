@@ -10,6 +10,7 @@ from slugify import slugify
 path = 'GeoPortal-Cordoba/localidades' # my default value
 total = 0 # do a full process. Use --total=3 for test 3 files
 full_log = []
+unknown_projection = [] # proyecciones que no conozcoy tomo cualquiera
 
 for arg in sys.argv:
     if arg == '-h' or arg == '--help':
@@ -115,6 +116,7 @@ for filename in archives:
     
     # Mejorar los nombres de los campos interpretando los tipos con SHP_TYPES
     geojson_mcp_fld = 'GeoJSON ' + nice_tipo + " " + anio
+    kml_mcp_fld = 'KML ' + nice_tipo + " " + anio
     shp_mcp_fld = 'SHP ' + nice_tipo + " " + anio
 
     print 'TIPO from %s to %s' % (tipo, nice_tipo)
@@ -129,9 +131,12 @@ for filename in archives:
         locu = localidad if type(localidad) == unicode else unicode(localidad.decode('utf-8'))
         print '%s for %s is %.2f' % (municipio, locu, lev_res)
         geoJsonFile = fname + '.geojson' if not myOGR.lastError else myOGR.lastError
+        geoKMLFile = fname + '.kml' if not myOGR.lastError else myOGR.lastError
+        
         final_loc[localidad] = {'muni': municipio, 'muni_id': m['id'], 'max_levi': lev_res, 'filename': fname}
         final_munis[localidad] = {'muni_municipedia': municipio, 'id_municipedia':m['id'], 
                             'depto':depto, 'max_levi': lev_res, geojson_mcp_fld: geoJsonFile, 
+                            kml_mcp_fld: geoKMLFile,  
                             shp_mcp_fld: fname + '.zip', 'anio': anio}
                 
         
@@ -147,19 +152,23 @@ for filename in archives:
     else: # el mejor levi ya fue definido y vinculado con un ID en municipedia
         print 'Add %s field for %s' % (geojson_mcp_fld, localidad)
         final_munis[localidad][geojson_mcp_fld] = fname + '.geojson' if not myOGR.lastError else myOGR.lastError
+        final_munis[localidad][kml_mcp_fld] = fname + '.kml' if not myOGR.lastError else myOGR.lastError
         # final_munis[loc][shp_mcp_fld] = fname + '.shp'
         
         municipio = final_munis[localidad]['muni_municipedia']
         
-    # aprovecho para copiar el SHP a un nuevo nombre (ahora que se a que municipio corresponde)
     new_filename = slugify('%s_%s_%s' % (municipio, nice_tipo, anio))
     new_filename_shp = '%s.shp.zip' % new_filename
     new_filename_gj = '%s.geojson' % new_filename
+    new_filename_kml = '%s.kml' % new_filename
+    
     # definir paths para los resultados
     new_path_shpfile = os.path.join(shp_folder, new_filename_shp)
     new_path_gjfile = os.path.join(geojson_folder, new_filename_gj)
+    new_path_kmlfile = os.path.join(geojson_folder, new_filename_kml)
     final_munis[localidad][shp_mcp_fld] = new_filename_shp
     final_munis[localidad][geojson_mcp_fld] = new_filename_gj
+    final_munis[localidad][kml_mcp_fld] = new_filename_kml
 
 
 
@@ -176,11 +185,26 @@ for filename in archives:
         exit(1)
 
 
+    # borrar el geoJson de destino si ya existe
+    proc = subprocess.Popen(['rm', new_path_kmlfile], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    stdout, stderr = proc.communicate()
+    if proc.returncode == 1:
+        print 'Error removing %s (probably doesn\'t exists)' % new_path_kmlfile
+        pass # No such file
+    elif proc.returncode != 0:
+        fl = 'ERROR[%d] %s -- %s' % (proc.returncode, stdout, stderr)
+        print fl
+        exit(1)
+
+
     # procesar con el comando OGR2OGR a GeoJSON
     # proyecciones encontradas
     if projection == u"PDF":
         print "NO TENGO PROYECCION (PDF) para %s" % municipio
-        continue
+        unknown_projection.append(municipio)
+        # continue
+        projection_origin = 'EPSG:22194'
+        
     elif projection == u"Gauss Kruger Zona 4 (Campo Inchauspe), -63\u00ba":
         projection_origin = 'EPSG:22194'
     elif projection == u"Gauss Kruger Zona 4 (WGS84), -63\u00ba (POSGAR98)":
@@ -198,21 +222,19 @@ for filename in archives:
                                   format_dest='GeoJSON')
     if not resOGR:
         print errorOGR
-        
     else:
-        print "Process OK: %s " % shp_orig
+        print "Process GeoJSON OK: %s " % shp_orig
 
     # procesar con el comando OGR2OGR a KML
-    dest_kml = new_path_gjfile.replace('.geojson', '.kml')
-    resOGR, errorOGR = myOGR.doit(shp_orig=shp_orig, dest_file=dest_kml, 
+    
+    resOGR, errorOGR = myOGR.doit(shp_orig=shp_orig, dest_file=new_path_kmlfile, 
                                   projection_origin=projection_origin, 
                                   projection_dest="EPSG:4326", 
                                   format_dest='KML')
     if not resOGR:
         print errorOGR
-        
     else:
-        print "Process OK: %s " % shp_orig
+        print "Process KML OK: %s " % shp_orig
 
 
     c += 1
@@ -225,24 +247,17 @@ except:
 
 # Ids usados de municipedia (salvo casos especiales ninguno debe ser 2)
 import codecs
-f = codecs.open('results/errores.csv', 'w', encoding='utf8')
-f.write('id,nombre,error,detalle')
+
 repetidos = 0
 nousados = 0
 
 for i, v in final_municipedia.iteritems():
     if v['used'] > 1:
-        error = 'Usado %s veces' % v['used']
-        f.write('\n%s,%s,%s,%s' % (i, v['name'], 'repetido', error))
+        print 'GRAVE REPETIDO %s veces. Muni: %s' % (v['used'], v['name'])
         repetidos += 1
     elif v['used'] == 0:
         nousados += 1
-        f.write('\n%s,%s,%s,' % (i, v['name'], 'no usado'))
-        
-for i in IGNORES:
-    f.write('\n%s,%s,%s,' % (0, i, 'no detectado'))
-
-f.close()
+    
 
 print "Repetidos (grave): %d" % repetidos
 print "No usados (no reciben datos en municipedia): %d" % nousados
@@ -295,6 +310,8 @@ for loc, data in final_munis.iteritems():
 
 # escribir cada dato en la columna que corresponda
 for loc, data in final_munis.iteritems():
+    loc = loc if type(loc) == unicode else unicode(loc.decode('utf8'))
+    
     f.write('\n%s' % loc)
     for fld in final_fields:
         d = data.get(fld, False)
@@ -307,3 +324,6 @@ for loc, data in final_munis.iteritems():
             
 
 f.close()
+
+print "Proyecciones desconocidas en %d municipios: %s" % len(unknown_projection)
+# print str(unknown_projection))

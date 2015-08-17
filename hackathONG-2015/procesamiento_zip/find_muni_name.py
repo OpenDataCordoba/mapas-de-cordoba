@@ -100,16 +100,17 @@ class LeviMuni():
                          'm': m, 
                          'levi': lev_res}
                          
-        if para=='Proyeccion' and final: # contabilizar y detallar el uso
-            fld = 'usado_%s' % para
-            # marcar como usado al municipio
-            if final_muni.get(fld, None):
-                print "DUPLICADO PROY %s" % str(final_muni[fld])
-                final_muni[fld].append(municipio)
-                return None 
-            else:
-                final_muni[fld] = [municipio]
+        if final: # contabilizar y detallar el uso en el caso de las proyecciones
+            if para=='Proyeccion':
+                fld = 'usado_%s' % para
+                # marcar como usado al municipio
                 
+                if final_muni.get(fld, None):
+                    print "DUPLICADO PROY %s" % str(final_muni[fld])
+                    final_muni[fld].append(municipio)
+                    return None 
+                else:
+                    final_muni[fld] = [municipio]
         else:
             print "NOT FOUND ERROR %s" % municipio
 

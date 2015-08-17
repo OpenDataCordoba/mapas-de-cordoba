@@ -16,12 +16,17 @@ FILENAME_REPLACES = {'radio_poly- 2010': 'radio_poly - 2010',
 IGNORES = [] # usado temporalmente para anotar los que no identifico
 
 # Ciudaes a ignorar en la busqueda de la lista de proyecciones
-IGNORES_PROY = ['VILLA REDUCCION', 'VILLA QUILINO', 'VILLA OESTE',
-                'SANTA MARIA DE PUNILLA', 'BARRIO NUEVO RIO CEBALLOS',
-                'GENERAL PAZ', 'YOCSINA', 'VILLA STA. EUGENIA',
-                'SAN IGNACIO  (LOTEO SAN JAVIER)',
-                'COUNTRY SAN ISIDRO - COUNTRY CHACRAS DE LA VILLA',
-                'BROWN - GUIÑAZU NORTE - 1 DE AGOSTO']
+IGNORES_PROY = []
+
+
+REPLACES_PROY={u'VILLAS LOS LLANOS - JUAREZ CELMAN': u'Estación Juárez Celman',
+               u'VILLA REDUCCION': u'Reducción', u'VILLA OESTE': u'Villa Nueva', 
+               u'VILLA QUILINO': u'Quilino', u'SANTA MARIA DE PUNILLA': u'Santa María',
+               u'BARRIO NUEVO RIO CEBALLOS': u'Río Ceballos', u'GENERAL PAZ': u'Estación General Paz', 
+               u'YOCSINA': u'Malagueño', u'VILLA STA. EUGENIA': u'Alpa Corral', 
+               u'SAN IGNACIO  (LOTEO SAN JAVIER)': u'San Ignacio', 
+               u'COUNTRY SAN ISIDRO - COUNTRY CHACRAS DE LA VILLA': u'Villa San Isidro', 
+               u'BROWN - GUIÑAZU NORTE - 1 DE AGOSTO': u'Estación Juárez Celman'}
 
 # reemplazos de municipios que cambian de nombre entre la denominacion que se les 
 # dio en el 2008 y en 2010. Necesito que estos dos sean el mismo
@@ -49,8 +54,6 @@ REPLACES = {u'Cura Brochero': u'Villa Cura Brochero',
             u'General Paz': u'Estación General Paz',
             u'Villa Los Llanos Juarez Celman': u'Estación Juárez Celman',
             u'Canteras el Sauce': u'Canteras El Sauce'}
-
-REPLACES_PROY={u'VILLAS LOS LLANOS - JUAREZ CELMAN': u'Estación Juárez Celman'}
 
 # algunas ciudades tienen mapas de diferentes zonas. 
 # primero la zona extra, segundo la ciudad a la que corresponde
