@@ -3,7 +3,7 @@
 Leer un directorio y procesa todos sus archivos SHP-ZIP
 """
 
-import os, subprocess, sys, processer, json, glob, shutil
+import os, subprocess, sys, processer, json, glob
 from parses import *
 from slugify import slugify
 
@@ -126,8 +126,8 @@ for filename in archives:
         exit(1)
     
     if final_munis.get(localidad, False) == False:
-            
-        print '%s for %s is %.2f' % (municipio, localidad, lev_res)
+        locu = localidad if type(localidad) == unicode else unicode(localidad.decode('utf-8'))
+        print '%s for %s is %.2f' % (municipio, locu, lev_res)
         geoJsonFile = fname + '.geojson' if not myOGR.lastError else myOGR.lastError
         final_loc[localidad] = {'muni': municipio, 'muni_id': m['id'], 'max_levi': lev_res, 'filename': fname}
         final_munis[localidad] = {'muni_municipedia': municipio, 'id_municipedia':m['id'], 

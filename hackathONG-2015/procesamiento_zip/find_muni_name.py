@@ -12,7 +12,14 @@ class LeviMuni():
         self.munis = munis # municipios de municipedia
         self.results = []
         self.projections = {} # cada ID de municipedia y su proyeccion
-
+        # algunos que no estan (?)
+        # CBA capital
+        self.projections[271] = u"Gauss Kruger Zona 4 (WGS84), -63º (POSGAR98)"
+        # Supongo que parque norte es igual a VILLAS LOS LLANOS - JUAREZ CELMAN
+        self.projections[2231] = u"Gauss Kruger Zona 4 (WGS84), -63º (POSGAR98)"
+        # loteo san javier es un barrio de San Ignacio, copia proyeccion
+        self.projections[500] = u"Gauss Kruger Zona 4 (WGS84), -63º (POSGAR98)"
+        
         # shit
         self.fix_type = None # fot fix nice_tipo
 
@@ -27,11 +34,13 @@ class LeviMuni():
             except Exception, e:
                 print "Error line %s => %s" % (str(p), str(e))
                 return None
-                
+
+            """
             if projection in ['', 'PDF']:
                 # print "IGNORE %s for PDF" % city
                 continue
-                
+            """
+             
             res = self.find(city)
                 
             if not res:
@@ -56,7 +65,7 @@ class LeviMuni():
 
         if para=='Proyeccion' and municipio in IGNORES_PROY:
             return None
-        if para=='Mapa' and municipio in IGNORES_PROY:
+        if para=='Mapa' and municipio in IGNORES:
             return None
             
         municipio = municipio if type(municipio) == unicode else unicode(municipio.decode('utf-8'))
