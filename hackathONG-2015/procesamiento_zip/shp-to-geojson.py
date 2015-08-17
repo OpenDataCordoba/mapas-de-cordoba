@@ -325,5 +325,5 @@ for loc, data in final_munis.iteritems():
 
 f.close()
 
-print "Proyecciones desconocidas en %d municipios: %s" % len(unknown_projection)
+print "Proyecciones desconocidas en %d municipios" % len(unknown_projection)
 # print str(unknown_projection))
