@@ -13,6 +13,9 @@ class LeviMuni():
         self.results = []
         self.projections = {} # cada ID de municipedia y su proyeccion
 
+        # shit
+        self.fix_type = None # fot fix nice_tipo
+
     def load(self, path = 'metadatos-2010/Paso-2--metadatos-by-tabulapdf.csv'):
         """ load from file all projections """        
         f = open(path, 'r')
@@ -34,6 +37,7 @@ class LeviMuni():
             if not res:
                 print "NO %s (%s)" % (city, projection)
             else:
+                projection = projection if type(projection) == unicode else unicode(projection.decode('utf-8'))
                 self.projections[res['m']['id']] = projection
                 
             
@@ -43,6 +47,7 @@ class LeviMuni():
             uno solo para cada utilidad) se usa el <para>
             para = Proyeccion | Mapa Se usa para leer los archivos con mapas o las proyecciones """
             
+        self.fix_type = None # shit
         max_levi = 0.0
         final = None
         final_muni = None # objeto de la iteracion en municipedia finalmente usado
@@ -58,17 +63,22 @@ class LeviMuni():
         # fix some none breaking space (used in latin 1)
         municipio = municipio.replace(u'\xa0', u' ')
 
-            
+        if para=='Mapa' and municipio in IGNORES:
+            print "Ignoring %s (MARK) " % municipio
+            return None
+                
         if para=='Mapa' and REPLACES.get(municipio, False): 
             municipio = REPLACES[municipio]
             
         if para=='Proyeccion' and REPLACES_PROY.get(municipio, False): 
             municipio = REPLACES_PROY[municipio]
 
-        if EXTRA_MAPS.get(municipio, False): 
+        if para=='Mapa' and EXTRA_MAPS.get(municipio, False): 
             # nice_tipo = '%s %s' % (nice_tipo, EXTRA_MAPS[municipio]['tipomapa'])
             municipio = EXTRA_MAPS[municipio]['nombre']
-        
+            print "ADDING %s for %s" % (municipio, extra_maps[municipio])
+            self.fix_type = '%s %s' % (nice_tipo, extra_maps[municipio]['tipomapa'])
+            
         for m in self.munis: # munis es mi base oficial de Municipedia
             muni = m['municipio'] if type(m['municipio']) == unicode else unicode(m['municipio'].decode('utf8'))
             muni = muni.upper().strip()
@@ -81,12 +91,12 @@ class LeviMuni():
                          'm': m, 
                          'levi': lev_res}
                          
-        if final: # contabilizar y detallar el uso
+        if para=='Proyeccion' and final: # contabilizar y detallar el uso
             fld = 'usado_%s' % para
             # marcar como usado al municipio
             if final_muni.get(fld, None):
-                final_muni[fld].append(municipio)
                 print "DUPLICADO PROY %s" % str(final_muni[fld])
+                final_muni[fld].append(municipio)
                 return None 
             else:
                 final_muni[fld] = [municipio]

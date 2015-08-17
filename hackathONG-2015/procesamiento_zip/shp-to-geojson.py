@@ -44,6 +44,7 @@ from find_muni_name import LeviMuni
 myLevi = LeviMuni(munis=munis)
 # cargar las proyecciones vinculadas a IDs de municipedia
 myLevi.load()
+projections = myLevi.projections
 
 munis_missing = list(munis) # copia para saber cuales no se usan
 final_munis = {} # relacion final desde el lado de los nombres de los archivos (localidad + tipo + anio)
@@ -56,13 +57,12 @@ from ogr import MyOGR # ejecutar ogr2ogr
 myOGR = MyOGR()
 
 for filename in archives:
-    full_log.append('---------------------------------------------------')
-    full_log.append('Process file %s' % filename)
+    print '---------------------------------------------------'
+    print 'Process file %s' % filename
         
     name_attr = processer.process(filename)
     if not name_attr:
         fl = ' xxxxxxxx CANT use file %s' % filename
-        full_log.append(fl)
         print fl
         exit(1)
 
@@ -73,7 +73,7 @@ for filename in archives:
     nice_tipo = SHP_TYPES.get(tipo, 'UNKNOWN SHP TYPE')
     full_path_filename = os.path.join(path, filename)
     
-    full_log.append(' ----- OGR for %s' % localidad)
+    print ' ----- OGR for %s' % localidad
     
     file_dir = '%s_%s_%s_%s' % (depto.replace(' ',''), localidad.replace(' ',''), nice_tipo.replace(' ',''), anio.replace(' ',''))
     
@@ -90,163 +90,131 @@ for filename in archives:
 
     # ver que proyeccion tiene segun los metadatos de 2010 
     # (supongo que es una extension de 2008 y es lo mismo)
+    # esto esta en myLevi.projections[id municipedia]
+    
     
     # buscar por cada archivo cual es el municipio oficial mas parecido segun Levi
     fname = filename if type(filename) == unicode else unicode(filename.decode('utf8'))
     fname = fname.replace('.zip', '')
-    full_log.append(' ----- Leving MUNI %s' % fname)
+    print ' ----- Leving MUNI %s' % fname
     # suponemos que localidad esta SIEMPRE escrito igual pero no,
     # las de 2010 y 2008 pueden diferir ... (por ejemplo Monte Maiz esta con y sin acento)
-    loc = localidad if type(localidad) == unicode else unicode(localidad.decode('utf8'))
-    # fix some none breaking space (used in latin 1)
-    loc = loc.replace(u'\xa0', u' ')
-    full_log.append('LOC: %s' % loc)
+
+    res = myLevi.find(localidad, para="Mapa")
+    if not res:
+        print "LEVI ERROR %s. Exiting" % localidad
+        exit(1)
+
+    m = res['m']
+    final_id_minicipedia = m['id']
+    municipio = m['municipio']
+    lev_res = res['levi']
     
-    if loc in IGNORES:
-        full_log.append("Ignoring %s (MARK) " % loc)
-        continue
-
-    replaces = REPLACES
-    if replaces.get(loc, False): 
-        full_log.append("REPLACING %s for %s" % (loc, replaces[loc]))
-        loc = replaces[loc]
-    else:
-        full_log.append("NOT REPLACING %s (%s - %s)" % (loc, repr(loc), type(loc)))
-        
-
-    extra_maps = EXTRA_MAPS
-    if extra_maps.get(loc, False): 
-        full_log.append("ADDING %s for %s" % (loc, extra_maps[loc]))
-        nice_tipo = '%s %s' % (nice_tipo, extra_maps[loc]['tipomapa'])
-        loc = extra_maps[loc]['nombre']
-        
+    if myLevi.fix_type: 
+        nice_tipo = myLevi.fix_type
+    
     # Mejorar los nombres de los campos interpretando los tipos con SHP_TYPES
     geojson_mcp_fld = 'GeoJSON ' + nice_tipo + " " + anio
     shp_mcp_fld = 'SHP ' + nice_tipo + " " + anio
 
-    full_log.append('TIPO from %s to %s' % (tipo, nice_tipo))
+    print 'TIPO from %s to %s' % (tipo, nice_tipo)
     
-    if final_munis.get(loc, False) == False:
-        max_levi = 0.0
-        final_id_minicipedia = None
-        final_muni = None
-        for m in munis: # munis es mi base oficial de Municipedia
-            muni = m['municipio'] if type(m['municipio']) == unicode else unicode(m['municipio'].decode('utf8'))
+    # ver si tengo su proyeccion
+    projection = projections.get(final_id_minicipedia, None)
+    if not projection:
+        print "No tenemos la proyeccion para %s %s" % (localidad, municipio)
+        exit(1)
+    
+    if final_munis.get(localidad, False) == False:
             
-            # asegurarse que todo se inicialicen con cero usos
-            if not final_municipedia.get(m['id'], False):
-                final_municipedia[m['id']] = {'name': muni, 'used': 0, 'uses': []}
-            
-            
-            lev_res = levi.ratio(loc, muni)
-            if lev_res > max_levi:
-                full_log.append('%s for %s is %.2f' % (muni, loc, lev_res))
-                max_levi = lev_res
-                geoJsonFile = fname + '.geojson' if not myOGR.lastError else myOGR.lastError
-                final_loc[loc] = {'muni': muni, 'muni_id': m['id'], 'max_levi': lev_res, 'filename': fname}
-                final_munis[loc] = {'muni_municipedia': muni, 'id_municipedia':m['id'], 
-                                    'depto':depto, 'max_levi': lev_res, geojson_mcp_fld: geoJsonFile, 
-                                    shp_mcp_fld: fname + '.zip', 'anio': anio}
-                final_id_minicipedia = m['id']
-                final_muni = muni
+        print '%s for %s is %.2f' % (municipio, localidad, lev_res)
+        geoJsonFile = fname + '.geojson' if not myOGR.lastError else myOGR.lastError
+        final_loc[localidad] = {'muni': municipio, 'muni_id': m['id'], 'max_levi': lev_res, 'filename': fname}
+        final_munis[localidad] = {'muni_municipedia': municipio, 'id_municipedia':m['id'], 
+                            'depto':depto, 'max_levi': lev_res, geojson_mcp_fld: geoJsonFile, 
+                            shp_mcp_fld: fname + '.zip', 'anio': anio}
                 
-        if final_muni: # es la primera coincidencia de un municipio
-            full_log.append('USED [muni_id:%s] %s # %d' % (str(final_id_minicipedia), loc, final_municipedia[final_id_minicipedia]['used']))
-            final_municipedia[final_id_minicipedia]['uses'].append({'localidad': loc, 'depto':depto, 'levi': lev_res})
+        
+        if final_municipedia.get(final_id_minicipedia, None):
+            final_municipedia[final_id_minicipedia]['uses'].append({'localidad': localidad, 'depto':depto, 'levi': lev_res})
             final_municipedia[final_id_minicipedia]['used'] += 1
-            # aprovecho para copiar el SHP a un nuevo nombre (ahora que se a que municipio corresponde)
-            new_filename = slugify('%s_%s_%s' % (final_muni, nice_tipo, anio))
-            new_filename_shp = '%s.shp.zip' % new_filename
-            new_filename_gj = '%s.geojson' % new_filename
-            new_path_shpfile = os.path.join(shp_folder, new_filename_shp)
-            new_path_gjfile = os.path.join(geojson_folder, new_filename_gj)
-            shutil.copy(full_path_filename, new_path_shpfile)
-            final_munis[loc][shp_mcp_fld] = new_filename_shp
-            # move old geoJSON to new
-            shutil.move(dest_geojson, new_path_gjfile)
-            final_munis[loc][geojson_mcp_fld] = new_filename_gj
+        else:
+            final_municipedia[final_id_minicipedia] = {'name': municipio, 'used': 0, 'uses': []}
+
+        print 'USED [muni_id:%s] %s # %d' % (str(final_id_minicipedia), localidad, final_municipedia[final_id_minicipedia]['used'])
+    
             
-            
-    else: #el mejor levi ya fue definido
-        # ya detecte el municpio pero este es otro mapa distinto que necesito tambien
-        full_log.append('Add %s field for %s' % (geojson_mcp_fld, loc))
-        final_munis[loc][geojson_mcp_fld] = fname + '.geojson' if not myOGR.lastError else myOGR.lastError
+    else: # el mejor levi ya fue definido y vinculado con un ID en municipedia
+        print 'Add %s field for %s' % (geojson_mcp_fld, localidad)
+        final_munis[localidad][geojson_mcp_fld] = fname + '.geojson' if not myOGR.lastError else myOGR.lastError
         # final_munis[loc][shp_mcp_fld] = fname + '.shp'
         
-        finalmuni = final_munis[loc]['muni_municipedia']
-        # aprovecho para copiar el SHP a un nuevo nombre (ahora que se a que municipio corresponde)
+        municipio = final_munis[localidad]['muni_municipedia']
         
-        # aprovecho para copiar el SHP a un nuevo nombre (ahora que se a que municipio corresponde)
-        new_filename = slugify('%s_%s_%s' % (finalmuni, nice_tipo, anio))
-        new_filename_shp = '%s.shp.zip' % new_filename
-        new_filename_gj = '%s.geojson' % new_filename
-        new_path_shpfile = os.path.join(shp_folder, new_filename_shp)
-        new_path_gjfile = os.path.join(geojson_folder, new_filename_gj)
-        shutil.copy(full_path_filename, new_path_shpfile)
-        final_munis[loc][shp_mcp_fld] = new_filename_shp
-        # move old geoJSON to new
-        shutil.move(dest_geojson, new_path_gjfile)
-        final_munis[loc][geojson_mcp_fld] = new_filename_gj
-
-
-
-
-        
-
-
-
+    # aprovecho para copiar el SHP a un nuevo nombre (ahora que se a que municipio corresponde)
+    new_filename = slugify('%s_%s_%s' % (municipio, nice_tipo, anio))
+    new_filename_shp = '%s.shp.zip' % new_filename
+    new_filename_gj = '%s.geojson' % new_filename
+    # definir paths para los resultados
+    new_path_shpfile = os.path.join(shp_folder, new_filename_shp)
+    new_path_gjfile = os.path.join(geojson_folder, new_filename_gj)
+    final_munis[localidad][shp_mcp_fld] = new_filename_shp
+    final_munis[localidad][geojson_mcp_fld] = new_filename_gj
 
 
 
     
     # borrar el geoJson de destino si ya existe
-    fnamedest = filename.replace('.zip', '.geojson')
-    fnamedest = fnamedest.replace(' ', '-')
-    dest_geojson = os.path.join(geojson_folder,fnamedest) 
-    
-    proc = subprocess.Popen(['rm', dest_geojson], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    proc = subprocess.Popen(['rm', new_path_gjfile], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     stdout, stderr = proc.communicate()
     if proc.returncode == 1:
-        full_log.append('Error removing %s (probably doesn\'t exists)' % dest_geojson)
+        print 'Error removing %s (probably doesn\'t exists)' % new_path_gjfile
         pass # No such file
     elif proc.returncode != 0:
         fl = 'ERROR[%d] %s -- %s' % (proc.returncode, stdout, stderr)
-        full_log.append(fl)
         print fl
         exit(1)
 
 
     # procesar con el comando OGR2OGR a GeoJSON
+    # proyecciones encontradas
+    if projection == u"PDF":
+        print "NO TENGO PROYECCION (PDF) para %s" % municipio
+        continue
+    elif projection == u"Gauss Kruger Zona 4 (Campo Inchauspe), -63\u00ba":
+        projection_origin = 'EPSG:22194'
+    elif projection == u"Gauss Kruger Zona 4 (WGS84), -63\u00ba (POSGAR98)":
+        projection_origin = 'EPSG:22174'
+    else:
+        print "PROYECCION DESCONOCIDA=(%s) para %s" % (projection, municipio)
+        exit(1)
+
+    
     myOGR.load(localidad, anio, tipo)
     
-    resOGR, errorOGR = myOGR.doit(shp_orig=shp_orig, dest_file=dest_geojson,
-                                  projection_origin="EPSG:22194", projection_dest="EPSG:4326", 
+    resOGR, errorOGR = myOGR.doit(shp_orig=shp_orig, dest_file=new_path_gjfile,
+                                  projection_origin=projection_origin, 
+                                  projection_dest="EPSG:4326", 
                                   format_dest='GeoJSON')
     if not resOGR:
-        full_log.append(errorOGR)
         print errorOGR
         
     else:
-        full_log.append("Process OK: %s " % shp_orig)
+        print "Process OK: %s " % shp_orig
 
     # procesar con el comando OGR2OGR a KML
-    dest_kml = dest_geojson.replace('.geojson', '.kml')
+    dest_kml = new_path_gjfile.replace('.geojson', '.kml')
     resOGR, errorOGR = myOGR.doit(shp_orig=shp_orig, dest_file=dest_kml, 
-                                  projection_origin="EPSG:22194", projection_dest="EPSG:4326", 
+                                  projection_origin=projection_origin, 
+                                  projection_dest="EPSG:4326", 
                                   format_dest='KML')
     if not resOGR:
-        full_log.append(errorOGR)
         print errorOGR
         
     else:
-        full_log.append("Process OK: %s " % shp_orig)
+        print "Process OK: %s " % shp_orig
 
 
-
-    
-                
-            
-            
     c += 1
     if total > 0 and c >= total: break
 
