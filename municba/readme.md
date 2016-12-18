@@ -1,13 +1,18 @@
 Origen de los datos
+===================
+
 
 GEOSERVER de la muni recientemente publicado.
+
 
 Descargate los datos
 --------------------
 
-wget 'https://gobiernoabierto.cordoba.gob.ar/geoserver/sde/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=sde:catastro-sde-parcela&outputFormat=csv&srsName=EPSG:4326' -O /tmp/parcelas.csv
-
 Esto descarga un enorme CSV con las parcelas de la ciudad.
+
+```
+$ wget 'https://gobiernoabierto.cordoba.gob.ar/geoserver/sde/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=sde:catastro-sde-parcela&outputFormat=csv&srsName=EPSG:4326' -O /tmp/parcelas.csv
+```
 
 
 Carga estos datos a PostGIS
@@ -44,4 +49,12 @@ catastro=# \copy parcelas FROM '/tmp/parcelas.csv' WITH CSV HEADER;
 Actualiza el SRID 
 ```
 catastro=# SELECT UpdateGeometrySRID('parcelas','geom', 4326);
+```
+
+Ver los datos
+-------------
+
+Por ejemplo, puede verse los fid y features usando
+```
+SELECT fid, ST_AsEWKT(geom) from parcelas limit 2;
 ```
