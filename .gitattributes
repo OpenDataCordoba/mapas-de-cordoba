@@ -1,0 +1,1 @@
+layers/parcela.csv filter=lfs diff=lfs merge=lfs -text
